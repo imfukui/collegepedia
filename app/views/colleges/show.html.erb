@@ -1,0 +1,30 @@
+<div class="show-main-container">
+  <div class="nav-bar">
+    <div class="nav-bar-content">
+      <%= link_to 'School', '#', class: "nav-bar-menu" %>
+      <%= link_to 'Class', '#', class: "nav-bar-menu" %>
+    </div>
+  </div>
+  <div class="show-detail">
+    <h1><%= @college.name %></h1>
+    <h5><%= @college.address %></h5>
+    <table>
+      <tr>
+        <td>創立</td>
+        <td><%= @college.estyear %></td>
+      </tr>
+      <tr>
+        <td>公私区分</td>
+        <td><%= @college.sector %></td>
+      </tr>
+      <tr>
+        <td>GPA</td>
+        <td><%= @college.mingpa %></td>
+      </tr>
+      <tr>
+        <td>特色</td>
+        <td><%= @college.description %></td>
+      </tr>
+    </table>
+  </div>
+</div>
