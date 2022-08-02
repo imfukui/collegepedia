@@ -1,2 +1,26 @@
-<h1>Collreviews#show</h1>
-<p>Find me in app/views/collreviews/show.html.erb</p>
+<div class="show-info">
+  <h1>SUB: <%= @collreview.sub %></h1>
+  <h5>reviewed by <%= @collreview.user.email %></h5>
+  <table>
+    <tr>
+      <td>学費</td>
+      <td>$<%= @collreview.tuition %>/year</td>
+    </tr>
+    <tr>
+      <td>学生数</td>
+      <td><%= @collreview.scale %>人</td>
+    </tr>
+    <tr>
+      <td>大学の環境</td>
+      <td><%= @collreview.environment %></td>
+    </tr>
+    <tr>
+      <td>魅力のあるところ</td>
+      <td><%= @collreview.pros %></td>
+    </tr>
+    <tr>
+      <td>改善してほしいところ</td>
+      <td><%= @collreview.cons %></td>
+    </tr>
+  </table>
+</div>

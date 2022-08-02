@@ -1,2 +1,32 @@
-<h1>Collreviews#new</h1>
-<p>Find me in app/views/collreviews/new.html.erb</p>
+<h1 class="submit-form-heading"><%= @college.name %>のレビューを投稿する</h1>
+<%= form_with model: [@college, @collreview] do |f| %>
+  <%= f.hidden_field :college_id, :value => @college.id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <div class="submit-form-body">
+    <div class="form-group">
+      <h4><%= f.label :sub, "レビューのタイトル" %></h4>
+      <p><%= f.text_field :sub, class:"form-control" %></p>
+    </div>
+    <div class="form-group">
+      <h4><%= f.label :tuition, "学費" %></h4>
+      <p>$ <%= f.number_field :tuition, class:"form-control" %> /年</p>
+    </div>
+    <div class="form-group">
+      <h4><%= f.label :scale, "学生数" %></h4>
+      <p><%= f.number_field :scale, class:"form-control" %> 人</p>
+    </div>
+    <div class="form-group">
+      <h4><%= f.label :environment, "環境" %></h4>
+      <p><%= f.text_area :environment, placeholder: "大学周辺エリアの治安や留学生の数など", class:"form-control" %></p>
+    </div>
+    <div class="form-group">
+      <h4><%= f.label :pros, "いいと思う点" %></h4>
+      <p><%= f.text_area :pros, class:"form-control" %></p>
+    </div>
+    <div class="form-group">
+      <h4><%= f.label :cons, "改善すべきと思う点" %></h4>
+      <p><%= f.text_area :cons, class:"form-control" %></p>
+    </div>
+    <%= f.submit "投稿する", class: "submit-button" %>
+  </div>
+<% end %>
