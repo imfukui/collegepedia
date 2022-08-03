@@ -26,13 +26,13 @@
         <td><%= @college.description %></td>
       </tr>
     </table>
-    <%= link_to '大学の評価を作成', new_college_collreview_path(params[:id]), class: "create-button" %>
+    <%= link_to '大学のレビューを追加', new_college_collreview_path(params[:id]), class: "create-button" %>
     <h2 class="review-index-title">この大学についたレビュー</h2>
     <div class="college-review-index">
       <% @collreviews.each do |collreview| %>
         <%= link_to college_collreview_path(collreview.id), class: "block-link" do %>
           <h2><%= collreview.sub %></h2>
-          <h5>reviewed by <%= collreview.user.email %></h5>
+          <h5>reviewed by <%= collreview.user.name %></h5>
           <h5><%= collreview.updated_at.to_s(:datetime_jp) %></h5>
         <% end %>
       <% end %>

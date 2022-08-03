@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'user/registrations'}
+  resources :users, only: [:show]
   get '/', to: 'colleges#home'
   resources :colleges do
     resources :collreviews, only: [:show, :new, :create]

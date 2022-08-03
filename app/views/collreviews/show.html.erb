@@ -1,6 +1,6 @@
 <div class="show-info">
   <h1>SUB: <%= @collreview.sub %></h1>
-  <h5>reviewed by <%= @collreview.user.email %></h5>
+  <h5>reviewed by <%= link_to @collreview.user.name, user_path(@collreview.user.id) %></h5>
   <table>
     <tr>
       <td>学費</td>
