@@ -15,7 +15,31 @@ class CollreviewsController < ApplicationController
     if @collreview.save!
       redirect_to '/'
     else
-      render :show
+      render :new
+    end
+  end
+
+  def edit
+    @collreview = Collreview.find(params[:id])
+  end
+
+  def update
+    @collreview = Collreview.find(params[:id])
+    if current_user.id == @collreview.user_id
+      @collreview.update!(collreview_params)
+      redirect_to user_path(current_user.id)
+    else
+      render "colleges/home"
+    end
+  end
+
+  def destroy
+    @collreview = Collreview.find(params[:id])
+    if current_user.id == @collreview.user_id
+      @collreview.destroy
+      redirect_to user_path(current_user.id)
+    else
+      render "colleges/home"
     end
   end
 

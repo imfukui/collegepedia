@@ -5,6 +5,10 @@
 <%= @user.introduction %>
 <h3>reviews</h3>
 <% @user.collreviews.each do |collreview| %>
- <p><%= collreview.sub %></p>
- <p><%= collreview.environment %></p>
+  <p><%= collreview.sub %></p>
+  <p><%= collreview.environment %></p>
+  <% if current_user.id == @user.id %>
+    <%= link_to 'Edit', edit_collreview_path(collreview) %>
+    <%= link_to 'Delete', collreview_path(collreview), method: :delete %>
+  <% end %>
 <% end %>

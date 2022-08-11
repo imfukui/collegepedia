@@ -30,7 +30,7 @@
     <h2 class="review-index-title">この大学についたレビュー</h2>
     <div class="college-review-index">
       <% @collreviews.each do |collreview| %>
-        <%= link_to college_collreview_path(collreview.id), class: "block-link" do %>
+        <%= link_to college_collreview_path(collreview.college_id, collreview.id), class: "block-link" do %>
           <h2><%= collreview.sub %></h2>
           <h5>reviewed by <%= collreview.user.name %></h5>
           <h5><%= collreview.updated_at.to_s(:datetime_jp) %></h5>
