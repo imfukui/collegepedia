@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -23,7 +24,9 @@
       <p class="notice"><%= notice %></p>
     <% end %>
     <% if flash.alert %>
-      <p class="alert"><%= alert %></p>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %>
+      </div>
     <% end %>
     <%= yield %>
     <%= render 'shared/footer' %>
