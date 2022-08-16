@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions: 'user/sessions'
   }
   resources :users, only: [:show]
-  get '/', to: 'colleges#home'
+  get '/', to: 'homes#index'
   resources :colleges do
     resources :collreviews, only: [:show, :new, :create]
   end
