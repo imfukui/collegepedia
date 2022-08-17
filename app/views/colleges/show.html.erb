@@ -26,7 +26,7 @@
         <td><%= @college.description %></td>
       </tr>
     </table>
-    <%= link_to '大学のレビューを追加', new_college_collreview_path(params[:id]), class: "create-button" %>
+    <%= link_to '大学のレビューを追加', new_college_collreview_path(params[:id]), class: "btn btn-outline-success" %>
     <h2 class="review-index-title">この大学についたレビュー</h2>
     <div class="college-review-index">
       <% @collreviews.each do |collreview| %>

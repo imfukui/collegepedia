@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'user/registrations',
-    sessions: 'user/sessions'
+    sessions: 'user/sessions',
+    passwords: 'user/passwords'
   }
   devise_scope :user do
-    post 'users/guest_sign_in', to: 'users#guest_sign_in'
+    post 'users/guest_sign_in', to: 'user/sessions#guest_sign_in'
   end
   resources :users, only: [:show]
   get '/', to: 'homes#index'
