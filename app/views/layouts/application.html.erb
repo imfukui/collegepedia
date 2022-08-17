@@ -21,14 +21,13 @@
   <body>
     <%= render 'shared/header' %>
     <% if flash.notice %>
-      <p class="notice"><%= notice %></p>
+      <div class="alert alert-info" role="alert">
+        <%= notice %>
+      </div>
     <% end %>
     <% if flash.alert %>
-      <div class="alert alert-danger d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-        <div>
-          <%= alert %>
-        </div>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %>
       </div>
     <% end %>
     <%= yield %>

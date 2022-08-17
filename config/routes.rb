@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     registrations: 'user/registrations',
     sessions: 'user/sessions'
   }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users#guest_sign_in'
+  end
   resources :users, only: [:show]
   get '/', to: 'homes#index'
   resources :colleges do
