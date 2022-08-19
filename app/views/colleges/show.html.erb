@@ -32,7 +32,7 @@
       <% @collreviews.each do |collreview| %>
         <%= link_to college_collreview_path(collreview.college_id, collreview.id), class: "block-link" do %>
           <h2><%= collreview.sub %></h2>
-          <h5>reviewed by <%= collreview.user.name %></h5>
+          <h5>reviewed by <%= image_tag collreview.user.image.variant( resize: "50" ).processed if collreview.user.image.attached? %></h5>
           <h5><%= collreview.updated_at.to_s(:datetime_jp) %></h5>
         <% end %>
       <% end %>

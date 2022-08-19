@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :collreviews
 
+  has_one_attached :image
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.name = "ゲスト"

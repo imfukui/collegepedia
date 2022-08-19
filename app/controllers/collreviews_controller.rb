@@ -49,9 +49,4 @@ class CollreviewsController < ApplicationController
   def collreview_params
     params.require(:collreview).permit(:sub, :tuition, :scale, :environment, :pros, :cons, :user_id, :college_id)
   end
-
-  def set_collreview
-    @collreview = Collreview.find(params[:id])
-    @college = College.find(params[:college_id])
-  end
 end
