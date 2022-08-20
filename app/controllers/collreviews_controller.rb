@@ -43,7 +43,6 @@ class CollreviewsController < ApplicationController
     end
   end
 
-
   private
 
   def collreview_params

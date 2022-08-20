@@ -7,23 +7,23 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   # def new
-    #super
-  #end
+    # super
+  # end
 
   # POST /resource
   # def create
-  #   super
+    # super
   # end
 
   # GET /resource/edit
   # def edit
-  #   super
+    # super
   # end
 
   # PUT /resource
-  #def update
-     #super
-  #end
+  # def update
+    # super
+  # end
 
   def ensure_normal_user
     if resource.email == 'guest@example.com'
@@ -46,6 +46,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
