@@ -173,11 +173,7 @@ body {
 }
 
 .form-control {
-  line-height: 230%;
-  width: 60%;
   margin-bottom: 40px;
-  border: 1px solid lightsteelblue;
-  border-radius: 4px;
 }
 
 .submit-form-body {
@@ -202,13 +198,9 @@ table td {
 }
 
 .account-form-container {
-  display: flex;
-  justify-content: center;
+  padding: 60px 100px;
 }
 
 .account-form {
-  width: fit-content;
   height: fit-content;
-  padding: 100px;
-  text-align: center;
 }

@@ -13,7 +13,7 @@ class CollreviewsController < ApplicationController
   def create
     @collreview = Collreview.new(collreview_params)
     if @collreview.save!
-      redirect_to '/'
+      redirect_to '/', notice: "大学の評価を作成しました！"
     else
       render :new
     end
@@ -27,9 +27,9 @@ class CollreviewsController < ApplicationController
     @collreview = Collreview.find(params[:id])
     if current_user.id == @collreview.user_id
       @collreview.update!(collreview_params)
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id), notice: "大学の評価を更新しました！"
     else
-      render "colleges/home"
+      redirect_to '/', alert: "更新できませんでした"
     end
   end
 
@@ -37,9 +37,9 @@ class CollreviewsController < ApplicationController
     @collreview = Collreview.find(params[:id])
     if current_user.id == @collreview.user_id
       @collreview.destroy
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id), notice: "大学の評価を削除しました"
     else
-      render "colleges/home"
+      redirect_to '/', alert: "削除できません"
     end
   end
 

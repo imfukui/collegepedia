@@ -19,13 +19,13 @@
       <p><%= f.text_area :environment, placeholder: "大学周辺エリアの治安や留学生の数など", class:"form-control" %></p>
     </div>
     <div class="form-group">
-      <h4><%= f.label :pros, "いいと思う点" %></h4>
+      <h4><%= f.label :pros, "いいと思うところ" %></h4>
       <p><%= f.text_area :pros, class:"form-control" %></p>
     </div>
     <div class="form-group">
-      <h4><%= f.label :cons, "改善すべきと思う点" %></h4>
+      <h4><%= f.label :cons, "改善してほしいところ" %></h4>
       <p><%= f.text_area :cons, class:"form-control" %></p>
     </div>
-    <%= f.submit "投稿する", class: "submit-button" %>
+    <%= f.submit "更新する", class: "submit-button" %>
   </div>
 <% end %>

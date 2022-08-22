@@ -26,7 +26,7 @@
 
       <div class="field">
         <%= f.label :image, class: "form-label" %><br />
-        <%= image_tag current_user.image %>
+        <%= image_tag current_user.image if current_user.image.attached? %>
         <%= f.file_field :image, autofocus: true, class: "form-control" %>
       </div>
 

@@ -20,16 +20,7 @@
 
   <body>
     <%= render 'shared/header' %>
-    <% if flash.notice %>
-      <div class="alert alert-info" role="alert">
-        <%= notice %>
-      </div>
-    <% end %>
-    <% if flash.alert %>
-      <div class="alert alert-danger" role="alert">
-        <%= alert %>
-      </div>
-    <% end %>
+    <%= render 'shared/notice' %>
     <%= yield %>
     <%= render 'shared/footer' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>

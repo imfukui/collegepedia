@@ -1,5 +1,8 @@
-<%= image_tag @user.image if @user.image.attached? %>
-
+<% if @user.image.blank? %>
+  <h5>image is not attached</h5>
+<% else %>
+  <%= image_tag @user.image.variant( resize: "150" ).processed %>
+<% end %>
 <%= @user.name %>
 <h3>Bio</h3>
 <%= @user.introduction %>
