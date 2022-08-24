@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: {
     registrations: 'user/registrations',
     sessions: 'user/sessions',
@@ -15,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :colleges, only: [:show] do
     resources :collreviews, only: [:show, :new, :create]
-    resources :lessons, only: [:index, :new, :create, :show, :edit, :update]
+    resources :lessons, only: [:index, :new, :create, :show, :edit, :update] do
+      resources :course_reviews, only: [:new, :create, :edit, :update, :destroy]
+    end
   end
 
   resources :collreviews, only: [:edit, :update, :destroy]
