@@ -7,6 +7,6 @@ FactoryBot.define do
     sector { 'private' }
     estyear { Faker::Number.within(range: 1800..1950) }
     mingpa { Faker::Number.within(range: 2.0..3.8) }
-    description { Faker::Lorem.characters(16) }
+    description { Faker::Quote.famous_last_words }
   end
 end

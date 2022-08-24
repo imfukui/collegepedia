@@ -1,43 +1,41 @@
-<div class="show-main-container">
-  <div class="nav-bar">
-    <div class="nav-bar-content">
-      <%= link_to 'School', '#', class: "nav-bar-menu" %>
-      <%= link_to 'Class', '#', class: "nav-bar-menu" %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3" id="sidebar-container">
+      <%= link_to 'School', college_path(@college), class: "nav-bar-menu" %>
+      <%= link_to 'Class', college_lessons_path(@college), class: "nav-bar-menu" %>
     </div>
-  </div>
-  <div class="show-detail">
-    <h1><%= @college.name %></h1>
-    <h5><%= @college.address %></h5>
-    <table>
-      <tr>
-        <td>創立</td>
-        <td><%= @college.estyear %>年</td>
-      </tr>
-      <tr>
-        <td>公私区分</td>
-        <td><%= @college.sector %></td>
-      </tr>
-      <tr>
-        <td>GPA(編入時)</td>
-        <td><%= @college.mingpa %></td>
-      </tr>
-      <tr>
-        <td>特色</td>
-        <td><%= @college.description %></td>
-      </tr>
-    </table>
-    <%= link_to '大学の評価を作成', new_college_collreview_path(params[:id]), class: "btn btn-outline-success" %>
-    <h2 class="review-index-title">この大学についたレビュー</h2>
-    <div class="college-review-index">
-      <% @collreviews.each do |collreview| %>
-        <%= link_to college_collreview_path(collreview.college_id, collreview.id), class: "block-link" do %>
-          <h2><%= collreview.sub %></h2>
-          <h5>reviewed by <%= collreview.user.name %></h5>
-          <h5><%= collreview.updated_at.to_s(:datetime_jp) %></h5>
+    <div class="col-12 col-md-9" id="college-detail-container">
+      <h1><%= @college.name %></h1>
+      <h6><i class="fas fa-map-marker-alt"></i> <%= @college.address %></h6>
+      <table>
+        <tr>
+          <td>創立</td>
+          <td><%= @college.estyear %>年</td>
+        </tr>
+        <tr>
+          <td>公私区分</td>
+          <td><%= @college.sector %></td>
+        </tr>
+        <tr>
+          <td>GPA(編入時)</td>
+          <td><%= @college.mingpa %></td>
+        </tr>
+        <tr>
+          <td>特色</td>
+          <td><%= @college.description %></td>
+        </tr>
+      </table>
+      <%= link_to '評価を追加', new_college_collreview_path(params[:id]), class: "btn btn-outline-primary" %>
+
+      <div class="college-review-index">
+        <% @collreviews.each do |collreview| %>
+          <%= link_to college_collreview_path(collreview.college_id, collreview.id), class: "block-link" do %>
+            <%= collreview.sub %>
+            <p>reviewed by <%= collreview.user.name %></p>
+            <p><%= collreview.updated_at.to_s(:datetime_jp) %></p>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
-  <div class="college-reviews">
   </div>
 </div>

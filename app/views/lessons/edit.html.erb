@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3">
+    </div>
+    <div class="col-12 col-md-9" id="class-edit-container">
+      <%= form_with model: [@college, @lesson] do |f| %>
+
+        <%= f.hidden_field :college_id, :value => @college.id %>
+
+        <div class="form-group">
+          <%= f.label :title, "クラス名", class: "form-label" %>
+          <%= f.text_field :title, placeholder: "ECON 101 Macro Economics", class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :professor, "教授名", class: "form-label" %>
+          <%= f.text_field :professor, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :department, "学部区分", class: "form-label" %>
+          <%= f.text_field :department, placeholder: "Business Administration", class:"form-control" %>
+        </div>
+        <%= f.submit "更新する", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

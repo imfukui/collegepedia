@@ -1,17 +1,28 @@
-<% if @user.image.blank? %>
-  <h5>image is not attached</h5>
-<% else %>
-  <%= image_tag @user.image.variant( resize: "150" ).processed %>
-<% end %>
-<%= @user.name %>
-<h3>Bio</h3>
-<%= @user.introduction %>
-<h3>reviews</h3>
-<% @user.collreviews.each do |collreview| %>
-  <p><%= collreview.sub %></p>
-  <p><%= collreview.environment %></p>
-  <% if current_user.id == @user.id %>
-    <%= link_to 'Edit', edit_collreview_path(collreview) %>
-    <%= link_to 'Delete', collreview_path(collreview), method: :delete %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-12" id="profile-about-me">
+      <div class="profile-image">
+        <% if @user.image.blank? %>
+          <h5>image is not attached</h5>
+        <% else %>
+          <%= image_tag @user.image.variant( resize: "150" ).processed %>
+        <% end %>
+      </div>
+      <div class="profile-info">
+        <h3><%= @user.name %></h3>
+        <p class="user-introduction"><%= @user.introduction %></p>
+      </div>
+    </div>
+    <div class="col-12" id="profile-posts-index">
+      <h2>Reviews</h2>
+      <% @user.collreviews.each do |collreview| %>
+        <p><%= collreview.sub %></p>
+        <p><%= collreview.environment %></p>
+        <% if current_user.id == @user.id %>
+          <%= link_to 'Edit', edit_collreview_path(collreview) %>
+          <%= link_to 'Delete', collreview_path(collreview), method: :delete %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

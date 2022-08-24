@@ -1,21 +1,29 @@
-<div class="header-container">
-  <div class="header-content-left">
-    <%= link_to 'Home', '/', class: "home-button" %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <div class="container-fluid">
+    <%= link_to 'Collegepedia', '/', class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Profile', user_path(current_user.id), class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Account', edit_user_registration_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link btn btn-dark" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+      <span class="navbar-text">
+      </span>
+    </div>
   </div>
-  <div class="header-content-right">
-    <% if user_signed_in? %>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Menu
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><%= link_to 'Profile', user_path(current_user.id), class: "dropdown-item" %></li>
-          <li><%= link_to 'Edit Account', edit_user_registration_path, class: "dropdown-item" %></li>
-          <li><%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-        </ul>
-      </div>
-    <% else %>
-      <%= link_to 'Login', new_user_session_path, class: "login-button" %>
-    <% end %>
-  </div>
-</div>
+</nav>

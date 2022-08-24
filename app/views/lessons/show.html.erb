@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3">
+    </div>
+    <div class="col-12 col-md-9" id="class-detail-container">
+      <h1><%= @lesson.title %></h1>
+      <p><%= @lesson.professor %></p>
+      <%= link_to '更新', edit_college_lesson_path(@college, @lesson), class: "btn btn-outline-secondary btn-sm" %>
+      <!-- コースのレビューをここから下に反映させていく -->
+    </div>
+  </div>
+</div>

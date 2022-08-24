@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3">
+
+    </div>
+    <div class="col-12 col-md-9" id="class-index-container">
+      <h1><%= @college.name %> class index</h1>
+      <%= link_to 'クラスを追加', new_college_lesson_path(@college), class: "btn btn-outline-primary" %>
+
+      <% @lessons.each do |lesson| %>
+        <%= link_to college_lesson_path(@college, lesson) do %>
+          <h3><%= lesson.title %></h3>
+          <%= lesson.professor %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
