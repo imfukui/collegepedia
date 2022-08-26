@@ -4,14 +4,15 @@
 
     </div>
     <div class="col-12 col-md-9" id="class-index-container">
-      <h1><%= @college.name %> class index</h1>
-      <%= link_to 'クラスを追加', new_college_lesson_path(@college), class: "btn btn-outline-primary" %>
-
+      <h1 class="fw-bold mb-5"><i class="far fa-address-book"></i> <%= @college.name %> course index</h1>
+      <%= link_to 'クラスを追加', new_college_lesson_path(@college), class: "btn btn-primary btn-sm mb-2" %>
       <% @lessons.each do |lesson| %>
-        <%= link_to college_lesson_path(@college, lesson) do %>
-          <h3><%= lesson.title %></h3>
-          <%= lesson.professor %>
-        <% end %>
+        <div class="shadow-sm p-3 mb-5 bg-body" id="class-index-list">
+          <%= link_to college_lesson_path(@college, lesson), class: "block-link link-dark" do %>
+            <h3><i class="far fa-bookmark"></i> <%= lesson.title %></h3>
+            <p><i class="fas fa-user-alt"></i> <%= lesson.professor %></p>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

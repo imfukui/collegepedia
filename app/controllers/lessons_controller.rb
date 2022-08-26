@@ -1,5 +1,4 @@
 class LessonsController < ApplicationController
-
   before_action :set_college, only: %i[index new show edit]
 
   def index
@@ -21,6 +20,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    @course_reviews = @lesson.course_reviews
   end
 
   def edit

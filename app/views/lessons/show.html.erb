@@ -3,10 +3,53 @@
     <div class="col-12 col-md-3">
     </div>
     <div class="col-12 col-md-9" id="class-detail-container">
-      <h1><%= @lesson.title %></h1>
-      <p><%= @lesson.professor %></p>
-      <%= link_to '更新', edit_college_lesson_path(@college, @lesson), class: "btn btn-outline-secondary btn-sm" %>
+      <div class="shadow-none p-3 mb-5 bg-light rounded class-info">
+        <h1 class="fw-bold"><%= @lesson.title %></h1>
+        <p><i class="fas fa-user-alt"></i> <%= @lesson.professor %></p>
+        <%= link_to 'クラスの評価を追加', new_college_lesson_course_review_path(@college, params[:id]), class: "btn btn-primary btn-sm" %>
+        <%= link_to 'クラスの情報を更新', edit_college_lesson_path(@college, @lesson), class: "btn btn-outline-secondary btn-sm" %>
+      </div>
       <!-- コースのレビューをここから下に反映させていく -->
+      <div class="course-review-index">
+        <h3><i class="far fa-comments"></i> Reviews</h3>
+        <% @course_reviews.each do |review| %>
+          <div class="shadow p-3 mb-5 bg-body rounded position-relative">
+            <% if review.user.image.blank? %>
+              <%= review.user.name %>
+            <% else %>
+              <%= image_tag review.user.image.variant( resize: "50" ).processed %>
+            <% end %>
+            <%= link_to review.user.name, user_path(review.user), class: "block-link link-success" %>
+            <p class="fw-light position-absolute top-0 end-0 mt-2 me-2"><i class="fas fa-clock"></i> <%= review.created_at.to_s(:datetime_jp) %></p>
+            <table class="table mt-3">
+              <tr>
+                <th>Quiz</th>
+                <td><%= review.quiz %></td>
+              </tr>
+              <tr>
+                <th>Exam</th>
+                <td><%= review.exam %></td>
+              </tr>
+              <tr>
+                <th>Assignment</th>
+                <td><%= review.assignment %></td>
+              </tr>
+              <tr>
+                <th>成績配分</th>
+                <td><%= review.gradedist %></td>
+              </tr>
+              <tr>
+                <th>Tips/Comment</th>
+                <td><%= review.comment %></td>
+              </tr>
+              <tr>
+                <th>最終成績</th>
+                <td><%= review.gradegot %></td>
+              </tr>
+            </table>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

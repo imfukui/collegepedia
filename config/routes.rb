@@ -15,9 +15,12 @@ Rails.application.routes.draw do
   resources :colleges, only: [:show] do
     resources :collreviews, only: [:show, :new, :create]
     resources :lessons, only: [:index, :new, :create, :show, :edit, :update] do
-      resources :course_reviews, only: [:new, :create, :edit, :update, :destroy]
+      resources :course_reviews, only: [:new, :create]
     end
+
   end
+
+  resources :course_reviews, only: [:edit, :update, :destroy]
 
   resources :collreviews, only: [:edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
