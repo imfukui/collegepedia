@@ -1,7 +1,5 @@
 require 'faker'
 
-Faker::Config.locale = 'ja'
-
 FactoryBot.define do
   factory :user do
     name                  { Faker::Name.name }

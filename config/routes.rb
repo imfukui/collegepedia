@@ -10,14 +10,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  get '/', to: 'homes#index'
+  get '/', to: 'colleges#index'
 
-  resources :colleges, only: [:show] do
+  resources :colleges, only: [:index, :show] do
     resources :collreviews, only: [:show, :new, :create]
     resources :lessons, only: [:index, :new, :create, :show, :edit, :update] do
       resources :course_reviews, only: [:new, :create]
     end
-
   end
 
   resources :course_reviews, only: [:edit, :update, :destroy]

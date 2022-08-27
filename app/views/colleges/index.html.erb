@@ -1,0 +1,16 @@
+<div class="container" id="home-container">
+  <div class="row">
+    <div class="col-11 col-md-6 pt-5 pb-5" id="home-index-container">
+      <h1 class="home-title">College-pedia</h1>
+      <div class="home-index-content mt-4">
+        <%= search_form_for @q do |f| %>
+          <%= f.search_field :name_cont, class: "form-control me-2" %>
+          <%= f.submit 'Search', class: "btn btn-outline-primary p-1 mt-2" %>
+        <% end %>
+      </div>
+      <% @colleges.each do |college| %>
+        <%= college.name %>
+      <% end %>
+    </div>
+  </div>
+</div>
