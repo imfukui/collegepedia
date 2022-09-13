@@ -20,6 +20,10 @@ body {
   font-family: 'DotGothic16', sans-serif;
 }
 
+.alert {
+  text-align: center;
+}
+
 #home-container {
   min-height: 500px;
 }

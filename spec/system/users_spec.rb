@@ -100,7 +100,7 @@ RSpec.describe "Users", type: :system do
     end
   end
 
-  scenario 'ゲストユーザーは情報の変更や削除ができない' do
+  scenario 'ゲストユーザーは情報の変更・削除ができない' do
     visit '/'
 
     click_link "Login"

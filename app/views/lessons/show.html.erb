@@ -9,7 +9,6 @@
         <%= link_to 'クラスの評価を追加', new_college_lesson_course_review_path(@college, params[:id]), class: "btn btn-primary btn-sm" %>
         <%= link_to 'クラスの情報を更新', edit_college_lesson_path(@college, @lesson), class: "btn btn-outline-secondary btn-sm" %>
       </div>
-      <!-- コースのレビューをここから下に反映させていく -->
       <div class="course-review-index">
         <h3><i class="far fa-comments"></i> Reviews</h3>
         <% @course_reviews.each do |review| %>

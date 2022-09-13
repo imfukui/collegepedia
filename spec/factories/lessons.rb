@@ -1,7 +1,8 @@
+require 'faker'
+
 FactoryBot.define do
   factory :lesson do
-    title { "MyString" }
-    professor { "" }
-    college_id { 1 }
+    title { Faker::Educator.course_name }
+    professor { Faker::Name.name }
   end
 end

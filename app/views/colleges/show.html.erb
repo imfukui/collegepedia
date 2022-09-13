@@ -16,7 +16,7 @@
         <h6 class="fw-light"><i class="fas fa-map-marker-alt ps-1"></i> <%= @college.address %></h6>
         <table class="table table table-striped mt-3">
           <tr>
-            <td>創立</<td>
+            <td>創立</td>
             <td><%= @college.estyear %>年</td>
           </tr>
           <tr>
@@ -35,7 +35,9 @@
       </div>
       <div class="d-flex mb-1">
         <h3><i class="far fa-comments"></i> Reviews</h3>
-        <%= link_to '評価を追加', new_college_collreview_path(params[:id]), class: "ms-auto btn btn-primary btn-sm p-2" %>
+        <%= link_to new_college_collreview_path(params[:id]), class: "ms-auto btn btn-primary btn-sm p-2" do %>
+          <i class="far fa-edit"></i> 評価を追加
+        <% end %>
       </div>
       <div class="collreview-index">
         <% @collreviews.each do |collreview| %>

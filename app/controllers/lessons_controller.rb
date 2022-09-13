@@ -3,6 +3,8 @@ class LessonsController < ApplicationController
 
   def index
     @lessons = @college.lessons
+    @q = @lessons.ransack(params[:q])
+    @search_results = @q.result(distinct: true)
   end
 
   def new
@@ -12,9 +14,9 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lesson_params)
     if @lesson.save!
-      redirect_to '/', notice: "クラスを登録しました！"
+      redirect_to college_lessons_url, notice: "クラスを登録しました！"
     else
-      redirect_to '/', alert: "クラスを作成できませんでした"
+      redirect_to college_lessons_url, alert: "クラスを作成できませんでした"
     end
   end
 
@@ -30,9 +32,9 @@ class LessonsController < ApplicationController
   def update
     @lesson = Lesson.find(params[:id])
     if @lesson.update!(lesson_params)
-      redirect_to action: :index, notice: "クラスの情報を更新しました"
+      redirect_to college_lessons_url, notice: "クラスの情報を更新しました"
     else
-      redirect_to :back, alert: "クラスの情報を更新できませんでした"
+      redirect_to college_lessons_url, alert: "クラスの情報を更新できませんでした"
     end
   end
 

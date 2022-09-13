@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   get '/', to: 'colleges#index'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
 
   resources :colleges, only: [:index, :show] do
-    resources :collreviews, only: [:show, :new, :create]
+    resources :collreviews, only: [:new, :create]
     resources :lessons, only: [:index, :new, :create, :show, :edit, :update] do
       resources :course_reviews, only: [:new, :create]
     end
