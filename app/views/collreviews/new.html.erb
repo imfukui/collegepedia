@@ -3,41 +3,43 @@
     <div class="col-12 col-md-3">
     </div>
     <div class="col-12 col-md-9" id="edit-collreview-container">
-      <h2><%= @college.name %></h2>
+      <h2 class="fw-bold"><%= @college.name %></h2>
       <%= form_with model: [@college, @collreview] do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.hidden_field :college_id, :value => @college.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
 
-          <div class="form-group">
-            <%= f.label :sub, "レビューのタイトル", class: "form-label" %>
-            <%= f.text_field :sub, class:"form-control" %>
-          </div>
-
-          <%= f.label :tuition, "学費", class: "form-label" %>
-          <div class="input-group mb-3">
-            <span class="input-group-text">$</span><%= f.number_field :tuition, class:"form-control" %>
-            <span class="input-group-text">.00</span>
-          </div>
-
-          <%= f.label :scale, "学生数", class: "form-label" %>
-          <div class="input-group mb-3">
-            <%= f.number_field :scale, class:"form-control" %>
-            <span class="input-group-text" id="basic-addon">人</span>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :environment, "環境", class: "form-label" %>
-            <%= f.text_area :environment, placeholder: "大学周辺エリアの治安や留学生の数など", class:"form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :pros, "いいと思うところ", class: "form-label" %>
-            <%= f.text_area :pros, class:"form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :cons, "改善してほしいところ", class: "form-label" %>
-            <%= f.text_area :cons, class:"form-control" %>
-          </div>
-          <%= f.submit "追加", class: "btn btn-primary" %>
+        <div class="form-group mb-3">
+          <%= f.label :sub, "レビューのタイトル", class: "form-label" %>
+          <%= f.text_field :sub, class:"form-control" %>
         </div>
+
+        <%= f.label :tuition, "学費", class: "form-label" %>
+        <div class="input-group mb-3">
+          <span class="input-group-text">$</span><%= f.number_field :tuition, class:"form-control" %>
+          <span class="input-group-text">.00</span>
+        </div>
+
+        <%= f.label :scale, "学生数", class: "form-label" %>
+        <div class="input-group mb-3">
+          <%= f.number_field :scale, class:"form-control" %>
+          <span class="input-group-text" id="basic-addon">人</span>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.label :environment, "環境", class: "form-label" %>
+          <%= f.text_area :environment, placeholder: "大学周辺エリアの治安や留学生の数など", class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :pros, "いいと思うところ", class: "form-label" %>
+          <%= f.text_area :pros, class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :cons, "改善してほしいところ", class: "form-label" %>
+          <%= f.text_area :cons, class:"form-control" %>
+        </div>
+        <%= f.submit "追加", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>

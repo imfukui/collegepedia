@@ -23,16 +23,18 @@ require 'faker'
   )
 end
 
-15.times do |n|
+10.times do |n|
   name = Faker::Internet.username
   email = Faker::Internet.unique.email(domain: 'example')
   password = "password"
+  admin = false
 
   User.create!(
     name: name,
     email: email,
     password: password,
-    password_confirmation: password
+    password_confirmation: password,
+    admin: admin
   )
 end
 
@@ -58,7 +60,7 @@ end
   pros = "いろいろな国から留学生を受け入れている"
   cons = "サークル等がないのでコミュニティに所属するのが難しい"
   college_id = Faker::Number.within(range: 1..30)
-  user_id = Faker::Number.within(range: 1..15)
+  user_id = Faker::Number.within(range: 1..10)
 
   Collreview.create!(
     sub: sub,
@@ -76,11 +78,11 @@ end
   exam = "ミッドタームとファイナルの2回"
   quiz = "毎週1回"
   assignment = "毎週ショートエッセイの提出がある"
-  gradedist = "exam50%/quiz20%/assignment20%/attendance10%"
+  gradedist = "試験50%・クイズ20%・提出物20%・出席10%"
   comment = "クイズの復習がexam対策になる"
   gragegot = "B"
   lesson_id = Faker::Number.within(range: 1..150)
-  user_id = Faker::Number.within(range: 1..15)
+  user_id = Faker::Number.within(range: 1..10)
 
   CourseReview.create!(
     exam: exam,

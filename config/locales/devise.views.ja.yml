@@ -2,6 +2,9 @@ ja:
   activerecord:
     attributes:
       user:
+        name: "ユーザー名"
+        introduction: "自己紹介"
+        image: "プロフィール画像"
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"

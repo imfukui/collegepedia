@@ -11,10 +11,15 @@
             <%= link_to 'Profile', user_path(current_user.id), class: "nav-link active" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Account', edit_user_registration_path, class: "nav-link active" %>
+            <%= link_to 'Your Account', edit_user_registration_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
-            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link btn btn-dark" %>
+            <% if current_user.admin? %>
+              <%= link_to 'Add a New College', new_college_path, class: "nav-link active" %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link active btn btn-dark" %>
           </li>
         <% else %>
           <li class="nav-item">

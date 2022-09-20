@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col-11 col-md-8 shadow-sm p-3 mb-5 bg-body rounded mt-4 ms-auto me-auto">
+    <h1 class="fw-bold"><i class="fa-solid fa-graduation-cap"></i> Add a New College</h1>
+    <%= form_with model: @college do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="form-group mb-3">
+        <%= f.label :name, "学校名", class: "form-label" %>
+        <%= f.text_field :name, placeholder: "NewYork University", class:"form-control" %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.label :address, "所在地", class: "form-label" %>
+        <%= f.text_field :address, placeholder: "Illinois", class:"form-control" %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.label :sector, "公私区分", class: "form-label" %>
+        <%= f.select :sector, [ ["Private"], ["Public"] ], {}, {class:"form-select"} %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.label :estyear, "設立年", class: "form-label" %>
+        <%= f.number_field :estyear, class:"form-control" %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.label :mingpa, "アプライ時に必要なGPA", class: "form-label" %>
+        <%= f.text_field :mingpa, class:"form-control" %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.label :description, "特色", class: "form-label" %>
+        <%= f.text_area :description, class:"form-control" %>
+      </div>
+      <%= f.submit "新規登録する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -21,19 +21,35 @@
         <% end %>
 
         <div class="field">
-          <%= f.label :introduction, class: "form-label" %><br />
-          <%= f.text_area :introduction, autofocus: true, class: "form-control mb-4" %>
+          <%= f.label :image, class: "form-label" %><br />
+          <%= image_tag current_user.image if current_user.image.attached? %>
+          <%= f.file_field :image, autofocus: true, class: "form-control mb-4" %>
         </div>
 
         <div class="field">
-          <%= f.label :image, class: "form-label" %><br />
-          <%= image_tag current_user.image if current_user.image.attached? %>
-          <%= f.file_field :image, autofocus: true, class: "form-control mb-4 mt-3" %>
+          <%= f.label :twitter, class: "form-label" %><br />
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <%= f.text_field :twitter, placeholder: "username", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :instagram, class: "form-label" %><br />
+          <div class="input-group mb-1">
+            <span class="input-group-text" id="basic-addon1">https://www.instagram.com/</span>
+            <%= f.text_field :instagram, placeholder: "username", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :introduction, class: "form-label" %><br />
+          <%= f.text_area :introduction, autofocus: true, class: "form-control mb-5" %>
         </div>
 
         <div class="field">
           <%= f.label :password, class: "form-label" %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control mb-4" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
           <% if @minimum_password_length %>
             <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
           <% end %>
@@ -48,7 +64,7 @@
           <%= f.submit t('.update'), class: "btn btn-primary" %>
         </div>
       <% end %>
-      <p><%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "btn btn-danger" %></p>
+      <p><%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "btn btn-outline-danger" %></p>
 
     </div>
   </div>

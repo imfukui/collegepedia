@@ -1,18 +1,15 @@
 class CollreviewsController < ApplicationController
   before_action :authenticate_user!
 
-  def show
-    @collreview = Collreview.find(params[:id])
-  end
-
   def new
-    @collreview = Collreview.new
     @college = College.find(params[:college_id])
+    @collreview = Collreview.new
   end
 
   def create
+    @college = College.find(params[:college_id])
     @collreview = Collreview.new(collreview_params)
-    if @collreview.save!
+    if @collreview.save
       redirect_to '/', notice: "大学の評価を作成しました！"
     else
       render :new
@@ -21,25 +18,26 @@ class CollreviewsController < ApplicationController
 
   def edit
     @collreview = Collreview.find(params[:id])
+    if @collreview.user_id != current_user.id
+      redirect_to '/'
+    end
   end
 
   def update
     @collreview = Collreview.find(params[:id])
-    if current_user.id == @collreview.user_id
-      @collreview.update!(collreview_params)
-      redirect_to user_path(current_user.id), notice: "大学の評価を更新しました！"
+    if current_user.id == @collreview.user_id && @collreview.update(collreview_params)
+      redirect_to user_path(current_user), notice: "大学の評価を更新しました！"
     else
-      redirect_to '/', alert: "更新できませんでした"
+      render :edit
     end
   end
 
   def destroy
     @collreview = Collreview.find(params[:id])
-    if current_user.id == @collreview.user_id
-      @collreview.destroy
-      redirect_to user_path(current_user.id), notice: "大学の評価を削除しました"
+    if current_user.id == @collreview.user_id && @collreview.destroy
+      redirect_to user_path(current_user), notice: "大学の評価を削除しました"
     else
-      redirect_to '/', alert: "削除できません"
+      redirect_to '/', alert: "削除できませんでした"
     end
   end
 

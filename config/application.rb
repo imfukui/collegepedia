@@ -24,8 +24,7 @@ module Collegepedia
       view_specs: false,
       helper_specs: false,
       controller_specs: false,
-      routing_specs: false,
-      request_specs: false
+      routing_specs: false
     end
 
     Faker::Config.locale = :en

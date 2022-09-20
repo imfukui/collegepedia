@@ -12,13 +12,22 @@
         <% end %>
       </div>
       <div class="profile-info">
-        <h3><%= @user.name %></h3>
+        <h5 class="fw-bold"><%= @user.name %></h5>
+        <% if @user.twitter.present? %>
+          <%= link_to("https://twitter.com/#{@user.twitter}", class: "text-decoration-none") do %>
+            <i class="fa-brands fa-twitter"></i>
+          <% end %>
+        <% end %>
+        <% if @user.instagram.present? %>
+          <%= link_to("https://www.instagram.com/#{@user.instagram}", class: "text-decoration-none text-dark") do %>
+            <i class="fa-brands fa-instagram"></i>
+          <% end %>
+        <% end %>
         <p class="user-introduction"><%= @user.introduction %></p>
-        <i class="fa-brands fa-twitter"></i> <i class="fa-brands fa-instagram"></i> <i class="fa-brands fa-square-facebook"></i>
       </div>
     </div>
     <div class="col-12" id="profile-posts-index">
-      <h2><i class="fas fa-comment-dots"></i> Comments</h2>
+      <h2><i class="fas fa-comment-dots"></i> Reviews</h2>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button

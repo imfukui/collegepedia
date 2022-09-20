@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_action :set_college, only: %i[index new show edit]
+  before_action :set_college
 
   def index
     @lessons = @college.lessons
@@ -13,10 +13,10 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lesson_params)
-    if @lesson.save!
+    if @lesson.save
       redirect_to college_lessons_url, notice: "クラスを登録しました！"
     else
-      redirect_to college_lessons_url, alert: "クラスを作成できませんでした"
+      render :new
     end
   end
 
@@ -31,10 +31,10 @@ class LessonsController < ApplicationController
 
   def update
     @lesson = Lesson.find(params[:id])
-    if @lesson.update!(lesson_params)
+    if @lesson.update(lesson_params)
       redirect_to college_lessons_url, notice: "クラスの情報を更新しました"
     else
-      redirect_to college_lessons_url, alert: "クラスの情報を更新できませんでした"
+      render :edit
     end
   end
 

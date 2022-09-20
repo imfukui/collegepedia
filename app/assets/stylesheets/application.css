@@ -24,6 +24,14 @@ body {
   text-align: center;
 }
 
+ul {
+  list-style: none;
+}
+
+/*.snslink {*/
+  /*text-decoration: none;*/
+/*}*/
+
 #home-container {
   min-height: 500px;
 }

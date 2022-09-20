@@ -3,36 +3,37 @@
     <div class="col-12 col-md-3">
     </div>
     <div class="col-12 col-md-9" id="add-course-review-container">
-      <h3><%= @lesson.title %> by <%= @lesson.professor %></h3>
+      <h2 class="fw-bold"><%= @lesson.title %> by <%= @lesson.professor %></h2>
       <%= form_with model: [@college, @lesson, @course_review] do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.hidden_field :lesson_id, :value => @lesson.id %>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
         <%= f.label :quiz, "Quiz", class: "form-label" %>
         <%= f.text_field :quiz, placeholder: "毎週１回", class:"form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <%= f.label :assignment, "課題", class: "form-label" %>
           <%= f.text_field :assignment, placeholder: "毎週エッセイの提出がある", class:"form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <%= f.label :exam, "Exam", class: "form-label" %>
           <%= f.text_field :exam, placeholder: "mid-termとfinalの２回", class:"form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <%= f.label :gradedist, "成績の配分", class: "form-label" %>
           <%= f.text_area :gradedist, placeholder: "exam(50%) quiz(10%) assignment(20%) attendance(20%)", class:"form-control" %>
         </div>
-        <div class="form-group">
-          <%= f.label :comment, "このコースの評価", class: "form-label" %>
+        <div class="form-group mb-3">
+          <%= f.label :comment, "コースの評価やコツ", class: "form-label" %>
           <%= f.text_area :comment, class:"form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <%= f.label :gradegot, "最終的にもらったグレード", class: "form-label" %>
-          <%= f.select :gradegot, [ ["A", "5"], ["B", "4"], ["C", "3"], ["D", "2"], ["F", "1"], ["回答しない", "0"] ] , class:"form-select" %>
+          <%= f.select :gradegot, [ ["A", "5"], ["B", "4"], ["C", "3"], ["D", "2"], ["F", "1"], ["回答しない", "0"] ] , {}, {class:"form-select"} %>
         </div>
-
         <%= f.submit "追加", class: "btn btn-primary" %>
       <% end %>
     </div>

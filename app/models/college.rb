@@ -1,6 +1,13 @@
 class College < ApplicationRecord
-  has_many :collreviews
-  has_many :lessons
+  has_many :collreviews, dependent: :destroy
+  has_many :lessons, dependent: :destroy
+
+  validates :name, {presence: true}
+  validates :address, {presence: true}
+  validates :sector, {presence: true}
+  validates :estyear, {presence: true}
+  validates :mingpa, {presence: true}
+  validates :description, {presence: true}
 
   def self.ransackable_attributes(auth_object = nil)
     %w[name address]

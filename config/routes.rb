@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
 
-  resources :colleges, only: [:index, :show] do
+  resources :colleges do
     resources :collreviews, only: [:new, :create]
     resources :lessons, only: [:index, :new, :create, :show, :edit, :update] do
       resources :course_reviews, only: [:new, :create]
