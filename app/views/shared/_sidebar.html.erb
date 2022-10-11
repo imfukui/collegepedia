@@ -1,0 +1,10 @@
+<div class="col-11 col-md-3 mt-4 ms-auto me-auto" id="sidebar-container">
+  <ul class="nav flex-md-column" id="sidebar-list">
+    <li class="nav-item col-6 col-md-12">
+      <%= link_to @college.name, college_path(@college), class: "nav-link link-secondary fw-bold", id: "school-nav-link" %>
+    </li>
+    <li class="nav-item col-6 col-md-12">
+      <%= link_to 'Class List', college_lessons_path(@college), class: "nav-link link-secondary fw-bold", id: "class-nav-link" %>
+    </li>
+  </ul>
+</div>
