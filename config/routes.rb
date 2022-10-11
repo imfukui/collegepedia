@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
     registrations: 'user/registrations',
     sessions: 'user/sessions',
@@ -11,8 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   get '/', to: 'colleges#index'
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
 
   resources :colleges do
     resources :collreviews, only: [:new, :create]

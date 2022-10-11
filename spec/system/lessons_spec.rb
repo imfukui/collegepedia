@@ -12,19 +12,19 @@ RSpec.describe "Lessons", type: :system do
 
     click_on "クラスを追加"
 
-    fill_in "クラス名", with: "BIO 105"
-    fill_in "教授名", with: "Michael Smith"
-    fill_in "学部区分", with: "Biology"
-    click_button "追加する"
+    expect {
+      fill_in "クラス名", with: "BIO 105"
+      fill_in "教授名", with: "Michael Smith"
+      fill_in "学部区分", with: "Biology"
+      click_button "追加する"
 
-    expect(page).to have_content "クラスを登録しました！"
+      expect(page).to have_content "クラスを登録しました！"
+    }.to change(college.lessons, :count).by(1)
 
     visit college_lesson_path(college, lesson)
-    click_on "クラスの情報を更新"
+    click_on "授業の情報を更新"
 
-    fill_in "クラス名", with: "Engineering 105"
-    fill_in "教授名", with: "John Burns"
-    fill_in "学部区分", with: "Engineering"
+    fill_in "クラス名", with: "Engineering 102"
     click_button "更新する"
 
     expect(page).to have_content "クラスの情報を更新しました"

@@ -20,17 +20,25 @@ body {
   font-family: 'DotGothic16', sans-serif;
 }
 
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+}
+
+.container {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
 .alert {
   text-align: center;
+  opacity: 0.9;
 }
 
 ul {
   list-style: none;
 }
-
-/*.snslink {*/
-  /*text-decoration: none;*/
-/*}*/
 
 #home-container {
   min-height: 500px;
@@ -56,13 +64,13 @@ ul {
 .footer-container {
   width: 100%;
   height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-top: 130px;
+  text-align: center;
 }
 
 .footer-container p {
   color: white;
+  text-align: center;
 }
 
 .home-main-container {
@@ -97,18 +105,9 @@ ul {
   margin: 40px 0;
 }
 
-#class-index-container {
-  border-left: solid 1px darkgray;
-  padding: 50px 20px;
-}
-
 #class-index-list {
   border-bottom: solid 1px darkgray;
   border-right: solid 1px darkgray;
-}
-
-#class-detail-container{
-  padding: 40px 20px;
 }
 
 .class-info {

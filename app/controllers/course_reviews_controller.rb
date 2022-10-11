@@ -1,4 +1,5 @@
 class CourseReviewsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_college_and_lesson, only: %i[new create]
 
   def new
@@ -8,7 +9,7 @@ class CourseReviewsController < ApplicationController
   def create
     @course_review = CourseReview.new(course_review_params)
     if @course_review.save
-      redirect_to '/', notice: "コースの評価を追加しました！"
+      redirect_to '/', notice: "授業の評価を追加しました！"
     else
       render :new
     end
@@ -24,7 +25,7 @@ class CourseReviewsController < ApplicationController
   def update
     @course_review = CourseReview.find(params[:id])
     if @course_review.user_id == current_user.id && @course_review.update(course_review_params)
-      redirect_to user_path(current_user), notice: "クラスの評価を更新しました！"
+      redirect_to user_path(current_user), notice: "授業の評価を更新しました！"
     else
       render :edit
     end

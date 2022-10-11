@@ -19,7 +19,6 @@ RSpec.describe "Colleges", type: :system do
       expect(page).not_to have_content other_college.name
       expect(page).not_to have_content other_college.address
       expect(page).not_to have_content other_college.description
-      binding.pry
       expect(page).to have_content collreview.sub
       expect(page).not_to have_content other_college_review.sub
     end

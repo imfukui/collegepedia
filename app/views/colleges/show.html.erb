@@ -1,19 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-3 mt-4" id="sidebar-container">
-      <ul class="nav flex-md-column" id="sidebar-list">
-        <li class="nav-item col-6 col-md-12">
-          <%= link_to 'School', college_path(@college), class: "nav-link link-secondary fw-bold", id: "school-nav-link" %>
-        </li>
-        <li class="nav-item col-6 col-md-12">
-          <%= link_to 'Class', college_lessons_path(@college), class: "nav-link link-secondary fw-bold", id: "class-nav-link" %>
-        </li>
-      </ul>
-    </div>
-    <div class="col-12 col-md-9 mt-3" id="college-detail-container">
+    <%= render 'shared/sidebar' %>
+    <div class="col-12 col-md-9 mt-4" id="college-detail-container">
       <div class="shadow-none p-3 mb-5 bg-light rounded position-relative">
         <h1 class="fw-bold"><%= @college.name %></h1>
-        <%= link_to 'データを修正', edit_college_path(@college), class: "btn btn-outline-secondary btn-sm position-absolute top-0 end-0 mt-3 me-2" %>
+        <% if current_user.admin? %>
+          <%= link_to 'データを修正', edit_college_path(@college), class: "btn btn-outline-secondary btn-sm position-absolute top-0 end-0 mt-3 me-2" %>
+        <% end %>
         <h6 class="fw-light"><i class="fas fa-map-marker-alt ps-1"></i> <%= @college.address %></h6>
         <table class="table table table-striped mt-3">
           <tr>
@@ -44,7 +37,7 @@
         <% @collreviews.each do |collreview| %>
           <div class="shadow p-3 mb-5 bg-body rounded position-relative">
             <% if collreview.user.image.blank? %>
-              <%= collreview.user.name %>
+              <h3><i class="fa-solid fa-circle-user"></i></h3>
             <% else %>
               <%= image_tag collreview.user.image.variant( resize: "50" ).processed %>
             <% end %>

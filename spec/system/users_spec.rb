@@ -6,12 +6,12 @@ RSpec.describe "Users", type: :system do
 
     exist_user = FactoryBot.create(:user)
 
-    describe 'アカウント作成' do
+    describe 'アカウント作成時' do
       context '正常な情報を入力した場合' do
         it 'アカウント作成に成功する' do
           visit new_user_registration_path
 
-          fill_in "Name", with: "テストユーザー"
+          fill_in "ユーザー名", with: "テストユーザー"
           fill_in "メールアドレス", with: "unique@yahoo.com"
           fill_in "パスワード", with: "password"
           fill_in "確認用パスワード", with: "password"
@@ -25,7 +25,7 @@ RSpec.describe "Users", type: :system do
         it 'アカウント作成に失敗する' do
           visit new_user_registration_path
 
-          fill_in "Name", with: "テストユーザー"
+          fill_in "ユーザー名", with: "テストユーザー"
           fill_in "メールアドレス", with: exist_user.email
           fill_in "パスワード", with: "password"
           fill_in "確認用パスワード", with: "password"
@@ -39,7 +39,7 @@ RSpec.describe "Users", type: :system do
         it 'アカウント作成に失敗する' do
           visit new_user_registration_path
 
-          fill_in "Name", with: "テストユーザー"
+          fill_in "ユーザー名", with: "テストユーザー"
           fill_in "メールアドレス", with: ""
           fill_in "パスワード", with: "password"
           fill_in "確認用パスワード", with: "password"
@@ -50,7 +50,7 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    describe 'ログイン' do
+    describe 'ログイン時' do
       context '作成済みのアカウントでログインする場合' do
         it '正常にログインできる' do
           visit '/'
@@ -77,7 +77,7 @@ RSpec.describe "Users", type: :system do
           sign_in(user)
           visit edit_user_registration_path
 
-          fill_in "Name", with: "testuser"
+          fill_in "ユーザー名", with: "testuser"
 
           click_button "更新"
 
@@ -105,8 +105,7 @@ RSpec.describe "Users", type: :system do
 
     click_link "Login"
     click_button "ゲストログイン"
-    click_button "Menu"
-    click_link "Edit Account"
+    click_link "Account"
 
     fill_in "メールアドレス", with: "updated@yahoo.com"
     click_button "更新"
