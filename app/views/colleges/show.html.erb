@@ -4,9 +4,6 @@
     <div class="col-12 col-md-9 mt-4" id="college-detail-container">
       <div class="shadow-none p-3 mb-5 bg-light rounded position-relative">
         <h1 class="fw-bold"><%= @college.name %></h1>
-        <% if current_user.admin? %>
-          <%= link_to 'データを修正', edit_college_path(@college), class: "btn btn-outline-secondary btn-sm position-absolute top-0 end-0 mt-3 me-2" %>
-        <% end %>
         <h6 class="fw-light"><i class="fas fa-map-marker-alt ps-1"></i> <%= @college.address %></h6>
         <table class="table table table-striped mt-3">
           <tr>
