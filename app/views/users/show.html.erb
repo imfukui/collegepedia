@@ -1,0 +1,192 @@
+<div class="container">
+  <div class="row">
+    <div class="col-11 shadow-sm p-3 mb-5 bg-body rounded ms-auto me-auto" id="profile-about-me">
+      <div class="profile-image">
+        <% if @user.image.blank? %>
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <h6 class="mb-4">Image Loading...</h6>
+        <% else %>
+          <%= image_tag @user.image.variant( resize: "150" ).processed %>
+        <% end %>
+      </div>
+      <div class="profile-info">
+        <h5 class="fw-bold"><%= @user.name %></h5>
+        <% if @user.twitter.present? %>
+          <%= link_to("https://twitter.com/#{@user.twitter}", class: "text-decoration-none") do %>
+            <i class="fa-brands fa-twitter"></i>
+          <% end %>
+        <% end %>
+        <% if @user.instagram.present? %>
+          <%= link_to("https://www.instagram.com/#{@user.instagram}", class: "text-decoration-none text-dark") do %>
+            <i class="fa-brands fa-instagram"></i>
+          <% end %>
+        <% end %>
+        <p class="user-introduction"><%= @user.introduction %></p>
+      </div>
+    </div>
+    <div class="col-12" id="profile-posts-index">
+      <h2><i class="fas fa-comment-dots"></i> Reviews</h2>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="college-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#college"
+            type="button"
+            role="tab"
+            aria-controls="college"
+            aria-selected="true"
+          >
+            College
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="course-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#course"
+            type="button"
+            role="tab"
+            aria-controls="course"
+            aria-selected="false"
+          >
+            Class
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="college"
+          role="tabpanel"
+          aria-labelledby="college-tab">
+          <% @user.collreviews.each do |collreview| %>
+            <div class="position-relative mt-3 shadow-none p-3 mb-5 bg-light rounded" id="users-college-review-container">
+              <h4 class="fw-bold"><%= link_to collreview.college.name, college_path(collreview.college), class: "link-success" %></h4>
+              <table class="table mt-3">
+                <tr>
+                  <th>Environment</th>
+                  <td><%= collreview.environment %></td>
+                </tr>
+                <tr>
+                  <th><i class="fa-regular fa-thumbs-up"></i></th>
+                  <td><%= collreview.pros %></td>
+                </tr>
+                <tr>
+                  <th><i class="fa-regular fa-thumbs-down"></i></th>
+                  <td><%= collreview.cons %></td>
+                </tr>
+              </table>
+
+              <% if current_user.id == @user.id %>
+                <div class="btn-group position-absolute top-0 end-0">
+                  <button class="btn btn-light btn-sm dropdown-toggle" id="collreview-edit-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item"><%= link_to 'Edit', edit_collreview_path(collreview), class: "btn btn-white btn-sm" %></li>
+                    <li class="dropdown-item"><!-- <%= button_to 'Delete', collreview_path(collreview), method: :delete, class: "btn btn-white btn-sm link-danger fw-bold" %> -->
+                    <button type="button" class="btn btn-white btn-sm link-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Delete
+                    </button>
+                    </li>
+                  </ul>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title fw-bold" id="exampleModalLabel">確認画面</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          本当に削除してもよろしいですか？
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <%= button_to 'Delete', collreview_path(collreview), method: :delete, class: "btn btn-danger" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="course"
+          role="tabpanel"
+          aria-labelledby="course-tab"
+        >
+          <% @user.course_reviews.each do |review| %>
+            <div class="position-relative mt-3 shadow-none p-3 mb-5 bg-light rounded" id="users-course-review-container">
+              <h4 class="fw-bold"><%= link_to review.lesson.title, college_lesson_path(review.lesson.college, review.lesson), class: "link-success" %></h4>
+              <p class="fw-light ms-1"><%= review.lesson.professor %></p>
+              <table class="table mt-3">
+                <tr>
+                  <th>Exam</th>
+                  <td><%= review.exam %></td>
+                </tr>
+                <tr>
+                  <th>Quiz</th>
+                  <td><%= review.quiz %></td>
+                </tr>
+                <tr>
+                  <th>Assignment</th>
+                  <td><%= review.assignment %></td>
+                </tr>
+                <tr>
+                  <th>成績配分</th>
+                  <td><%= review.gradedist %></td>
+                </tr>
+                <tr>
+                  <th><i class="far fa-comment-dots"></i></th>
+                  <td><%= review.comment %></td>
+                </tr>
+                <tr>
+                  <th>最終成績</th>
+                  <td><%= review.gradegot %></td>
+                </tr>
+              </table>
+              <% if @user.id == current_user.id %>
+                <div class="btn-group position-absolute top-0 end-0">
+                  <button class="btn btn-light btn-sm dropdown-toggle" id="course-review-edit-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item"><%= link_to 'Edit', edit_course_review_path(review), class: "btn btn-white btn-sm" %></li>
+                    <li class="dropdown-item"><button type="button" class="btn btn-white btn-sm link-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Delete
+                    </button></li>
+                  </ul>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title fw-bold" id="exampleModalLabel">確認画面</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          本当に削除してもよろしいですか？
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <%= button_to 'Delete', course_review_path(review), method: :delete, class: "btn btn-danger" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

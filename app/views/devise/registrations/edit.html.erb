@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="account-form-container col-12 col-md-7 mt-4 mb-4">
+      <h2><%= t('.title', resource: resource.model_name.human) %></h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :name, class: "form-label" %><br />
+          <%= f.text_field :name, autofocus: true, class: "form-control mb-4" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email, class: "form-label" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-4" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :image, class: "form-label" %><br />
+          <%= image_tag current_user.image if current_user.image.attached? %>
+          <%= f.file_field :image, autofocus: true, class: "form-control mb-4" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :twitter, class: "form-label" %><br />
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <%= f.text_field :twitter, placeholder: "username", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :instagram, class: "form-label" %><br />
+          <div class="input-group mb-1">
+            <span class="input-group-text" id="basic-addon1">https://www.instagram.com/</span>
+            <%= f.text_field :instagram, placeholder: "username", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :introduction, class: "form-label" %><br />
+          <%= f.text_area :introduction, autofocus: true, class: "form-control mb-5" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, class: "form-label" %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          <% if @minimum_password_length %>
+            <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, class: "form-label" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mb-4" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit t('.update'), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <button type="button" class="btn btn-outline-danger mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      アカウント削除
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold" id="exampleModalLabel">確認画面</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              本当に削除してもよろしいですか？
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

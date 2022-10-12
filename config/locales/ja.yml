@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました"
+    models:
+      college: "学校"
+      collreview: "学校の評価"
+      lesson: "授業"
+      course_review: "授業の評価"
+    attributes:
+      college:
+        name: "学校名"
+        address: "所在地"
+        sector: "公私区分"
+        estyear: "設立年"
+        mingpa: "アプライ時に必要なGPA"
+        description: "特徴/特色"
+      collreview:
+        sub: "レビュータイトル"
+        tuition: "学費"
+        scale: "生徒数"
+        environment: "環境"
+        pros: "いいと思うところ"
+        cons: "改善してほしいところ"
+      lesson:
+        title: "クラス名"
+        professor: "教授名"
+        department: "学部区分"
+      course_review:
+        exam: "Exam"
+        quiz: "Quiz"
+        assignment: "課題"
+        gradedist: "成績の配分"
+        comment: "授業の評価/コツ"
+        gradegot: "最終的に取ったグレード"

@@ -1,0 +1,25 @@
+<%= provide(:title, 'Home' ) %>
+  <div class="container">
+    <div class="row">
+      <div class="col-11 col-md-7 pt-5 pb-5" id="home-index-container">
+        <h1 class="home-title">College-pedia</h1>
+        <div class="home-index-content mt-4">
+          <%= search_form_for @q do |f| %>
+            <div class="d-flex home-index-content mt-4">
+              <%= f.search_field :name_or_address_cont, placeholder: "大学名または州名で検索" , class: "form-control me-2" %>
+                <%= f.submit 'Search!' , class: "btn btn-outline-primary p-2" %>
+            </div>
+            <% end %>
+        </div>
+        <div class="search-result-index mt-5">
+          <% if @q.conditions.present? %>
+            <% @colleges.each do |college| %>
+              <p class="fw-bold">
+                <%= link_to college.name, college_path(college), class: "link-secondary" %>
+              </p>
+              <% end %>
+                <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

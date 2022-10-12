@@ -1,0 +1,40 @@
+<%= provide(:title, 'Class Index') %>
+<div class="container">
+  <div class="row">
+    <%= render 'shared/sidebar' %>
+    <div class="col-12 col-md-9 mt-4">
+      <div class="d-flex mb-3 col-11 ms-auto me-auto">
+        <h1 class="fw-bold mb-0">Class Index</h1>
+        <%= link_to new_college_lesson_path(@college), class: "btn btn-outline-success ms-auto" do %>
+          <i class="far fa-edit"></i> クラスを追加
+        <% end %>
+      </div>
+      <%= search_form_for @q, url: college_lessons_path do |f| %>
+        <div class="d-flex search-container mt-2 mb-4">
+          <%= f.search_field :title_or_professor_cont, placeholder: "クラス名または教授名で探す", class: "form-control" %>
+          <%= f.submit 'Search', class: "btn btn-outline-primary btn-sm p-1 ms-2" %>
+        </div>
+      <% end %>
+      <div class="search-result-index">
+        <% if @q.conditions.present? %>
+          <% @search_results.each do |result| %>
+            <div class="shadow p-3 mb-5 bg-body rounded mt-5" id="class-index-list">
+              <%= link_to college_lesson_path(@college, result), class: "block-link link-dark" do %>
+                <h3><i class="far fa-bookmark"></i> <%= result.title %></h3>
+                <p><i class="fas fa-user-alt"></i> <%= result.professor %></p>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <% @lessons.each do |lesson| %>
+        <div class="shadow-sm p-3 mb-5 bg-body mt-5" id="class-index-list">
+          <%= link_to college_lesson_path(@college, lesson), class: "block-link link-dark" do %>
+            <h3><i class="far fa-bookmark"></i> <%= lesson.title %></h3>
+            <p><i class="fas fa-user-alt"></i> <%= lesson.professor %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

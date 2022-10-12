@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <%= render 'shared/sidebar' %>
+    <div class="col-12 col-md-9" id="add-course-review-container">
+      <h2 class="fw-bold"><%= @lesson.title %> by <%= @lesson.professor %></h2>
+      <%= form_with model: [@college, @lesson, @course_review] do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :lesson_id, :value => @lesson.id %>
+
+        <div class="form-group mb-3">
+        <%= f.label :quiz, class: "form-label" %>
+        <%= f.text_field :quiz, placeholder: "毎週１回", class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :assignment, class: "form-label" %>
+          <%= f.text_field :assignment, placeholder: "毎週エッセイの提出がある", class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :exam, class: "form-label" %>
+          <%= f.text_field :exam, placeholder: "mid-termとfinalの２回", class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :gradedist, class: "form-label" %>
+          <%= f.text_area :gradedist, placeholder: "exam(50%) quiz(10%) assignment(20%) attendance(20%)", class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :comment, class: "form-label" %>
+          <%= f.text_area :comment, class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :gradegot, class: "form-label" %>
+          <%= f.select :gradegot, [ ["A"], ["B"], ["C"], ["D"], ["F"], ["回答しない"] ] , {}, {class:"form-select"} %>
+        </div>
+        <%= f.submit "追加", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

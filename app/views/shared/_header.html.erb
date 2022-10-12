@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <div class="container-fluid">
+    <%= link_to 'Collegepedia', '/', class: "navbar-brand" %>
+    <button class="navbar-toggler" id="home-menu-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Profile', user_path(current_user), class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Account', edit_user_registration_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link btn bg-dark" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+      <span class="navbar-text">
+      </span>
+    </div>
+  </div>
+</nav>

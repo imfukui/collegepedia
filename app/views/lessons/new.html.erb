@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <%= render 'shared/sidebar' %>
+    <div class="col-12 col-md-9 shadow-sm p-3 mb-5 bg-body rounded mt-4" id="class-edit-container">
+      <h3 class="mb-3 fw-bold"><i class="far fa-address-book"></i> 新しくクラスを追加</h3>
+      <%= form_with model: [@college, @lesson] do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.hidden_field :college_id, :value => @college.id %>
+
+        <div class="form-group mb-3">
+          <%= f.label :title, class: "form-label" %>
+          <%= f.text_field :title, placeholder: "ECON 101 Macro Economics", class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :professor, class: "form-label" %>
+          <%= f.text_field :professor, class:"form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :department, class: "form-label" %>
+          <%= f.text_field :department, placeholder: "Business Administration", class:"form-control" %>
+        </div>
+        <%= f.submit "追加する", class: "btn btn-primary mt-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>
