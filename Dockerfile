@@ -8,15 +8,17 @@ RUN apt-get update && apt-get install -y nodejs yarn postgresql-client
 
 RUN mkdir /collegepedia
 WORKDIR /collegepedia
-COPY Gemfile /collegepedia/Gemfile
-COPY Gemfile.lock /collegepedia/Gemfile.lock
+
+ADD Gemfile /collegepedia/Gemfile
+ADD Gemfile.lock /collegepedia/Gemfile.lock
+
 RUN bundle install
-COPY . /collegepedia
+
+ADD . /collegepedia
+
+RUN mkdir -p tmp/sockets
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
-
-# Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]

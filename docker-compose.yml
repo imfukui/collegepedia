@@ -1,5 +1,19 @@
 version: "3.9"
 services:
+  app:
+    build:
+      context: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/collegepedia
+      - public-data:/collegepedia/public
+      - tmp-data:/collegepedia/tmp
+      - log-data:/collegepedia/log
+    networks:
+      - collegepedia-network
+    depends_on:
+      - db
+
   db:
     image: postgres
     volumes:
@@ -7,15 +21,21 @@ services:
     environment:
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=password"
+    networks:
+      - collegepedia-network
+
   web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    build:
+      context: ./nginx_docker
     volumes:
-      - .:/collegepedia
+      - public-data:/collegepedia/public
+      - tmp-data:/collegepedia/tmp
     ports:
-      - "3000:3000"
+      - "80:80"
     depends_on:
-      - db
+      - app
+    networks:
+      - collegepedia-network
     tty: true
     stdin_open: true
     environment:
@@ -24,3 +44,13 @@ services:
     image: selenium/standalone-chrome-debug
     logging:
       driver: none
+
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  db-data:
+
+networks:
+  collegepedia-network:
+    external: true
