@@ -1,0 +1,36 @@
+<div class="collreview-index">
+  <div class="shadow p-3 mb-5 bg-body rounded position-relative">
+    <div class="d-flex">
+      <% if collreview.user.image.blank? %>
+        <h3 class="mb-0"><i class="fa-solid fa-circle-user"></i></h3>
+      <% else %>
+        <%= image_tag collreview.user.image.variant( resize: "50" ).processed %>
+      <% end %>
+      <%= link_to collreview.user.name, user_path(collreview.user), class: "block-link link-success ms-2 mt-1" %>
+      <p class="fw-light mb-0 ms-auto"><i class="fas fa-clock"></i> <%= collreview.created_at.to_s(:datetime_jp) %></p>
+    </div>
+    <p class="fw-bold mt-3 mb-1"><i class="fa-regular fa-closed-captioning"></i> <%= collreview.sub %></p>
+    <table class="table">
+      <tr>
+        <th>学費</th>
+        <td>$<%= collreview.tuition %></td>
+      </tr>
+      <tr>
+        <th>学生数</th>
+        <td><%= collreview.scale %>人</td>
+      </tr>
+      <tr>
+        <th>環境</th>
+        <td><%= collreview.environment %></td>
+      </tr>
+      <tr>
+        <th><i class="fa-regular fa-thumbs-up"></i></th>
+        <td><%= collreview.pros %></td>
+      </tr>
+      <tr>
+        <th><i class="fa-regular fa-thumbs-down"></i></th>
+        <td><%= collreview.cons %></td>
+      </tr>
+    </table>
+  </div>
+</div>

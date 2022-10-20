@@ -1,3 +1,4 @@
+<%= provide(:title, @college.name) %>
 <div class="container">
   <div class="row">
     <%= render 'shared/sidebar' %>
@@ -30,42 +31,7 @@
           <i class="far fa-edit"></i> 評価を追加
         <% end %>
       </div>
-      <div class="collreview-index">
-        <% @collreviews.each do |collreview| %>
-          <div class="shadow p-3 mb-5 bg-body rounded position-relative">
-            <% if collreview.user.image.blank? %>
-              <h3><i class="fa-solid fa-circle-user"></i></h3>
-            <% else %>
-              <%= image_tag collreview.user.image.variant( resize: "50" ).processed %>
-            <% end %>
-            <%= link_to collreview.user.name, user_path(collreview.user), class: "block-link link-success" %>
-            <p class="fw-bold mt-3"><i class="fa-regular fa-closed-captioning"></i> <%= collreview.sub %></p>
-            <p class="fw-lighter position-absolute top-0 end-0 mt-2 me-2"><i class="fas fa-clock"></i> <%= collreview.created_at.to_s(:datetime_jp) %></p>
-            <table class="table">
-              <tr>
-                <th>学費</th>
-                <td>$<%= collreview.tuition %></td>
-              </tr>
-              <tr>
-                <th>学生数</th>
-                <td><%= collreview.scale %>人</td>
-              </tr>
-              <tr>
-                <th>環境</th>
-                <td><%= collreview.environment %></td>
-              </tr>
-              <tr>
-                <th><i class="fa-regular fa-thumbs-up"></i></th>
-                <td><%= collreview.pros %></td>
-              </tr>
-              <tr>
-                <th><i class="fa-regular fa-thumbs-down"></i></th>
-                <td><%= collreview.cons %></td>
-              </tr>
-            </table>
-          </div>
-        <% end %>
-      </div>
+      <%= render partial: 'review_index', collection: @collreviews, as: :collreview %>
     </div>
   </div>
 </div>

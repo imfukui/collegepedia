@@ -1,0 +1,37 @@
+<div class="shadow p-3 mb-5 bg-body rounded position-relative">
+  <div class="d-flex">
+    <% if review.user.image.blank? %>
+      <h3><i class="fa-solid fa-circle-user"></i></h3>
+    <% else %>
+      <%= image_tag review.user.image.variant( resize: "50" ).processed %>
+    <% end %>
+    <%= link_to review.user.name, user_path(review.user), class: "block-link link-success ms-2 mt-1" %>
+    <p class="fw-light mb-0 ms-auto"><i class="fas fa-clock"></i> <%= review.created_at.to_s(:datetime_jp) %></p>
+  </div>
+  <table class="table mt-3">
+    <tr>
+      <th>Quiz</th>
+      <td><%= review.quiz %></td>
+    </tr>
+    <tr>
+      <th>Exam</th>
+      <td><%= review.exam %></td>
+    </tr>
+    <tr>
+      <th>Assignment</th>
+      <td><%= review.assignment %></td>
+    </tr>
+    <tr>
+      <th>成績配分</th>
+      <td><%= review.gradedist %></td>
+    </tr>
+    <tr>
+      <th>Tips/Comment</th>
+      <td><%= review.comment %></td>
+    </tr>
+    <tr>
+      <th>最終成績</th>
+      <td><%= review.gradegot %></td>
+    </tr>
+  </table>
+</div>
