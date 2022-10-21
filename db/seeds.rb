@@ -28,13 +28,19 @@ end
   email = Faker::Internet.unique.email(domain: 'example')
   password = "password"
   admin = false
+  introduction = "in junior year | IELTS6.5"
+  twitter = "TwitterJP"
+  instagram = "instagram"
 
   User.create!(
     name: name,
     email: email,
     password: password,
     password_confirmation: password,
-    admin: admin
+    admin: admin,
+    introduction: introduction,
+    twitter: twitter,
+    instagram: instagram
   )
 end
 
@@ -42,7 +48,7 @@ end
   title = Faker::Educator.course_name
   professor = Faker::Name.name
   department = Faker::Educator.subject
-  college_id = Faker::Number.within(range: 2..21)
+  college_id = Faker::Number.within(range: 1..30)
 
   Lesson.create!(
     title: title,
