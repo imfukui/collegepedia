@@ -3,7 +3,8 @@ class CollegesController < ApplicationController
 
   def index
     @q = College.ransack(params[:q])
-    @colleges = @q.result(distinct: true)
+    @search_results = @q.result(distinct: true)
+    @colleges = College.order(created_at: :desc).limit(5)
   end
 
   def new

@@ -11,43 +11,7 @@
       </div>
       <div class="course-review-index">
         <h3><i class="far fa-comments"></i> Reviews</h3>
-        <% @course_reviews.each do |review| %>
-          <div class="shadow p-3 mb-5 bg-body rounded position-relative">
-            <% if review.user.image.blank? %>
-              <h3><i class="fa-solid fa-circle-user"></i></h3>
-            <% else %>
-              <%= image_tag review.user.image.variant( resize: "50" ).processed %>
-            <% end %>
-            <%= link_to review.user.name, user_path(review.user), class: "block-link link-success" %>
-            <p class="fw-light position-absolute top-0 end-0 mt-2 me-2"><i class="fas fa-clock"></i> <%= review.created_at.to_s(:datetime_jp) %></p>
-            <table class="table mt-3">
-              <tr>
-                <th>Quiz</th>
-                <td><%= review.quiz %></td>
-              </tr>
-              <tr>
-                <th>Exam</th>
-                <td><%= review.exam %></td>
-              </tr>
-              <tr>
-                <th>Assignment</th>
-                <td><%= review.assignment %></td>
-              </tr>
-              <tr>
-                <th>成績配分</th>
-                <td><%= review.gradedist %></td>
-              </tr>
-              <tr>
-                <th>Tips/Comment</th>
-                <td><%= review.comment %></td>
-              </tr>
-              <tr>
-                <th>最終成績</th>
-                <td><%= review.gradegot %></td>
-              </tr>
-            </table>
-          </div>
-        <% end %>
+        <%= render partial: 'lesson_review_index', collection: @course_reviews, as: :review %>
       </div>
     </div>
   </div>

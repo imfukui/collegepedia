@@ -17,24 +17,12 @@
       <% end %>
       <div class="search-result-index">
         <% if @q.conditions.present? %>
-          <% @search_results.each do |result| %>
-            <div class="shadow p-3 mb-5 bg-body rounded mt-5" id="class-index-list">
-              <%= link_to college_lesson_path(@college, result), class: "block-link link-dark" do %>
-                <h3><i class="far fa-bookmark"></i> <%= result.title %></h3>
-                <p><i class="fas fa-user-alt"></i> <%= result.professor %></p>
-              <% end %>
-            </div>
-          <% end %>
+          <h3 class="fw-bold mb-2">Search Result</h3>
+          <%= render partial: 'result_index', collection: @search_results, as: :result %>
         <% end %>
       </div>
-      <% @lessons.each do |lesson| %>
-        <div class="shadow-sm p-3 mb-5 bg-body mt-5" id="class-index-list">
-          <%= link_to college_lesson_path(@college, lesson), class: "block-link link-dark" do %>
-            <h3><i class="far fa-bookmark"></i> <%= lesson.title %></h3>
-            <p><i class="fas fa-user-alt"></i> <%= lesson.professor %></p>
-          <% end %>
-        </div>
-      <% end %>
+      <h3 class="fw-bold mb-2">Class List</h3>
+      <%= render partial: 'class_list', collection: @lessons, as: :lesson %>
     </div>
   </div>
 </div>

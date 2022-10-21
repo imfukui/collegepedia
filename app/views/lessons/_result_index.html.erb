@@ -1,0 +1,6 @@
+<div class="shadow p-3 mb-5 bg-body rounded" id="class-index-list">
+  <%= link_to college_lesson_path(@college, result), class: "block-link link-dark" do %>
+    <h3><i class="far fa-bookmark"></i> <%= result.title %></h3>
+    <p><i class="fas fa-user-alt"></i> <%= result.professor %></p>
+  <% end %>
+</div>
