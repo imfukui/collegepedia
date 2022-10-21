@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-    command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/collegepedia
       - public-data:/collegepedia/public
@@ -14,15 +14,17 @@ services:
     depends_on:
       - db
 
-  db:
-    image: postgres
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      - "POSTGRES_USER=postgres"
-      - "POSTGRES_PASSWORD=password"
-    networks:
-      - collegepedia-network
+# =======開発と本番切り替え====================
+  # db:
+  #   image: postgres
+  #   volumes:
+  #     - ./tmp/db:/var/lib/postgresql/data
+  #   environment:
+  #     - "POSTGRES_USER=postgres"
+  #     - "POSTGRES_PASSWORD=password"
+  #   networks:
+  #     - collegepedia-network
+# =========================================
 
   web:
     build:
