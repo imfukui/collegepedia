@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'rails-i18n', '~> 6.0.0'
 
+gem 'faker'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
@@ -46,7 +47,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'faker'
 end
 
 group :development do
