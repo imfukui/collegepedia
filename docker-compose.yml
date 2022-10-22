@@ -11,10 +11,10 @@ services:
       - log-data:/collegepedia/log
     networks:
       - collegepedia-network
-    depends_on:
-      - db
-
 # =======開発と本番切り替え====================
+    # depends_on:
+    #   - db
+
   # db:
   #   image: postgres
   #   volumes:
