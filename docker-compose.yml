@@ -33,7 +33,7 @@ services:
       - public-data:/collegepedia/public
       - tmp-data:/collegepedia/tmp
     ports:
-      - "81:80"
+      - 80:80
     depends_on:
       - app
     networks:
