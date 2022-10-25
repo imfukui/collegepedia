@@ -1,6 +1,6 @@
 class CourseReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_college_and_lesson, only: %i[new create]
+  before_action :set_college_and_lesson, only: %i[new (and) create]
 
   def new
     @course_review = CourseReview.new

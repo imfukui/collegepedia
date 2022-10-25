@@ -1,5 +1,5 @@
 class CollegesController < ApplicationController
-  before_action :if_admin, only: %i[new create edit update destroy]
+  before_action :if_admin, only: %i[new (and) create (and) edit (and) update (and) destroy]
 
   def index
     @q = College.ransack(params[:q])

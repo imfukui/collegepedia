@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-
   describe 'ログイン前' do
-
     exist_user = FactoryBot.create(:user)
 
     describe 'アカウント作成時' do
@@ -67,7 +65,6 @@ RSpec.describe "Users", type: :system do
   end
 
   describe 'ログイン後' do
-
     let(:user) { create(:user) }
     let(:other_user) { create(:user) }
 

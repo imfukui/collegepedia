@@ -12,8 +12,8 @@ services:
     networks:
       - collegepedia-network
 # =======開発と本番切り替え====================
-    # depends_on:
-    #   - db
+  #   depends_on:
+  #     - db
 
   # db:
   #   image: postgres

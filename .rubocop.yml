@@ -7,6 +7,17 @@ Rails:
 LineLength:
   Max: 130
 
+Airbnb/ClassOrModuleDeclaredInWrongFile:
+  Exclude:
+    - 'app/controllers/user/*'
+
+Airbnb/OptArgParameters:
+  Enabled: false
+
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+
 AllCops:
   Exclude:
     - 'db/**/*'
@@ -18,3 +29,4 @@ AllCops:
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - 'path/ruby'
+    - 'spec/**/*'
