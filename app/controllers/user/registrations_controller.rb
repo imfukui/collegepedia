@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
 class User::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_user, only: %i[update destroy]
+  before_action :ensure_normal_user, only: %i[update (and) destroy]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
-    # super
+  # super
   # end
 
   # POST /resource
   # def create
-    # super
+  # super
   # end
 
   def after_sign_up_path_for(resource)
@@ -21,12 +21,12 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   # def edit
-    # super
+  # super
   # end
 
   # PUT /resource
   # def update
-    # super
+  # super
   # end
 
   def ensure_normal_user

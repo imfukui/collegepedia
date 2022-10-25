@@ -15,12 +15,12 @@
         <h5 class="fw-bold mb-0 me-2"><%= @user.name %></h5>
         <% if @user.twitter.present? %>
           <%= link_to("https://twitter.com/#{@user.twitter}", class: "text-decoration-none me-1") do %>
-            <i class="fa-brands fa-twitter"></i>
+            <i class="fab fa-twitter"></i>
           <% end %>
         <% end %>
         <% if @user.instagram.present? %>
           <%= link_to("https://www.instagram.com/#{@user.instagram}", class: "text-decoration-none text-dark") do %>
-            <i class="fa-brands fa-instagram"></i>
+            <i class="fab fa-instagram-square"></i>
           <% end %>
         <% end %>
       </div>

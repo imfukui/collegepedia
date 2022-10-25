@@ -1,7 +1,7 @@
 <div class="shadow p-3 mb-5 bg-body rounded position-relative">
   <div class="d-flex">
     <% if review.user.image.blank? %>
-      <h3><i class="fa-solid fa-circle-user"></i></h3>
+      <h3><i class="fas fa-user-circle"></i></h3>
     <% else %>
       <%= image_tag review.user.image.variant( resize: "50" ).processed %>
     <% end %>
