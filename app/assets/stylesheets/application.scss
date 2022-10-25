@@ -1,0 +1,262 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  width: 100%;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+}
+
+.container {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.alert {
+  text-align: center;
+  opacity: 0.9;
+}
+
+ul {
+  list-style: none;
+}
+
+#home-container {
+  min-height: 500px;
+}
+
+.header-container {
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.login-button, .home-button {
+  text-decoration: none;
+  color: whitesmoke;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.footer-container {
+  width: 100%;
+  height: 300px;
+  padding-top: 130px;
+  text-align: center;
+}
+
+.footer-container p {
+  color: white;
+  text-align: center;
+}
+
+.home-main-container {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+#home-content {
+  min-height: 600px;
+  width: 100%;
+  text-align: center;
+  padding: 170px 30px;
+}
+
+#profile-about-me {
+  margin-top: 30px;
+  border-bottom: solid 1px darkgray;
+  border-right: solid 1px darkgray;
+}
+
+#profile-posts-index {
+  margin: 40px 0;
+}
+
+#edit-collreview-container {
+  margin: 40px 0;
+}
+
+#class-index-list {
+  border-bottom: solid 1px darkgray;
+  border-right: solid 1px darkgray;
+}
+
+.class-info {
+  margin-bottom: 50px;
+}
+
+#add-course-review-container {
+  padding: 40px 20px;
+}
+
+#edit-course-review-container {
+  margin: 50px 0;
+}
+
+.home-title {
+  color: dimgray;
+  font-family: 'Rampart One', cursive;
+}
+
+.show-main-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+}
+
+.nav-bar {
+  width: fit-content;
+  height: 600px;
+  background-color: whitesmoke;
+}
+
+.nav-bar-content {
+  padding: 60px;
+}
+
+.nav-bar-content h1 {
+  margin:  0;
+  color: darkslategray;
+}
+
+.nav-bar-menu {
+  width: 100%;
+  text-decoration: none;
+  color: darkslategray;
+  font-weight: bolder;
+  padding: 30px;
+  display: block;
+}
+
+.show-detail {
+  display: inline-block;
+  float: right;
+  padding: 60px;
+}
+
+.show-detail h1{
+  font-size: 50px;
+  margin: 0px;
+  border-bottom: 1px double slategray;
+}
+
+.show-detail h5 {
+  margin: 8px 0px 0px 8px;
+}
+
+.show-detail ul{
+  margin: 30px, 0px;
+}
+
+.show-detail li {
+  list-style: none;
+  line-height: 30px;
+}
+
+.show-detail table {
+  margin: 40px 0 50px 10px;
+}
+
+.show-detail td {
+  padding: 10px 20px;
+  line-height: 30px;
+  border: 1px dotted slategray;
+}
+
+.review-index-title {
+  margin: 70px 0 0 0;
+}
+
+.create-button {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 10px;
+  background-color: seagreen;
+  border-radius: 3px;
+}
+
+.college-review-index {
+  margin: 20px 10px;
+  padding: 20px;
+  border: 1px solid white;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+.college-review-index h2 {
+  margin: 0;
+}
+
+.block-link {
+  text-decoration: none;
+}
+
+.submit-form-heading {
+  padding-left: 30px;
+}
+
+.review-index-title {
+  margin: 40px 0 0 0;
+}
+
+.submit-form-body {
+  padding: 10px 60px;
+}
+
+.submit-form-body h4, p {
+  margin: 0;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: seagreen;
+  color: whitesmoke;
+  border: 2px solid seagreen;
+  border-radius: 3px;
+  margin-bottom: 50px;
+}
+
+.account-form-container {
+  margin: auto;
+}
+
+#home-index-container {
+  margin: auto;
+  text-align: center;
+}
+
+#school-nav-link {
+  text-align: center;
+}
+
+#class-nav-link {
+  text-align: center;
+}
