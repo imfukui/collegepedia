@@ -19,7 +19,7 @@
   - VPC
   - EC2
   - RDS
-  -S3
+  - S3
 
 * Docker/docker-compose
 
