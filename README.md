@@ -1,24 +1,28 @@
-# README
+# Collegepedia
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+海外の大学(メインでアメリカ)に留学している学生が所属する学校やそこでの授業の雰囲気、評価を投稿するwebアプリケーションです。
+どの授業を選択するか迷っている留学中の学生はもちろん、『長期留学に興味があるけど現地での生の声を聞きたい。』、『大学の雰囲気について詳しく知りたい！』という長期留学を考えている日本の学生の方々にも情報収集やマッチングの場としてお使いいただけます。
 
-Things you may want to cover:
+## 使用技術
 
-* Ruby version
+* Ruby 3.0.4
 
-* System dependencies
+* Ruby on Rails 6.1.6
 
-* Configuration
+* PostgreSQL 13.7
 
-* Database creation
+* Puma
 
-* Database initialization
+* Nginx
 
-* How to run the test suite
+* AWS
+  - VPC
+  - EC2
+  - RDS
+  -S3
 
-* Services (job queues, cache servers, search engines, etc.)
+* Docker/docker-compose
 
-* Deployment instructions
+* RSpec
 
-* ...
+## インフラ構成図
