@@ -64,5 +64,6 @@
 <img width="993" alt="スクリーンショット 2022-10-31 17 17 10" src="https://user-images.githubusercontent.com/98569234/198962653-f03b63fa-ed78-4cd4-8577-755b238aed1a.png">
 
 ## AWS構成図
+![AWS](https://user-images.githubusercontent.com/98569234/199191749-58ca65b6-973f-43fa-b6cb-d5340eea4a92.png)
 
 ## データベースER図
