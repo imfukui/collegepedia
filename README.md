@@ -68,3 +68,5 @@
 
 ## データベースER図
 ![Model](https://user-images.githubusercontent.com/98569234/199454414-3b592b76-80c5-4faf-be28-1a93905ad987.png)
+
+## 機能一覧
