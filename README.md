@@ -67,3 +67,4 @@
 ![AWS](https://user-images.githubusercontent.com/98569234/199191749-58ca65b6-973f-43fa-b6cb-d5340eea4a92.png)
 
 ## データベースER図
+![Model](https://user-images.githubusercontent.com/98569234/199454414-3b592b76-80c5-4faf-be28-1a93905ad987.png)
