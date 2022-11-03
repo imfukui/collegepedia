@@ -5,7 +5,7 @@
 <img width="1097" alt="スクリーンショット 2022-10-31 15 22 39" src="https://user-images.githubusercontent.com/98569234/199151083-2f3997ae-c25d-40fb-a827-88d3bbcea7ef.png">
 
 ##### URL
- [http::/3.115.167.14](http::/3.115.167.14)
+[Collegepedia](http://3.115.167.14/)
 
 ## 使用技術
 
