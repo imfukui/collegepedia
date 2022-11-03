@@ -28,6 +28,11 @@
 * Docker/docker-compose
 
 * RSpec
+### 機能一覧
+* ユーザー登録、ログイン、ゲストログイン機能(devise)
+* 投稿機能
+* 検索機能(ransack)
+* 管理者画面機能(rails_admin, cancancan)
 
 ## 利用方法
 1. ホーム画面上部の”Login”をクリックしアカウント登録、またはログインします。
@@ -69,4 +74,3 @@
 ## データベースER図
 ![Model](https://user-images.githubusercontent.com/98569234/199454414-3b592b76-80c5-4faf-be28-1a93905ad987.png)
 
-## 機能一覧
