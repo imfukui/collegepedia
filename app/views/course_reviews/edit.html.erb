@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-3">
-    </div>
-    <div class="col-12 col-md-9 shadow-sm p-3 mb-5 bg-body rounded" id="edit-course-review-container">
-      <h3><%= @course_review.lesson.title %> by <%= @course_review.lesson.professor %></h3>
+    <div class="col-11 col-md-8 ms-auto me-auto">
+      <h3 class="fw-bold mb-3"><%= @course_review.lesson.title %> by <%= @course_review.lesson.professor %></h3>
       <%= form_with model: [@college, @lesson, @course_review] do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
@@ -30,13 +28,33 @@
           <%= f.label :comment, class: "form-label" %>
           <%= f.text_area :comment, class:"form-control" %>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-4">
           <%= f.label :gradegot, class: "form-label" %>
           <%= f.select :gradegot, [ ["A"], ["B"], ["C"], ["D"], ["F"], ["回答しない"] ] , {}, {class:"form-select"} %>
         </div>
 
         <%= f.submit "更新", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-outline-danger fw-bold ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        評価を削除
+        </button>
       <% end %>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold" id="exampleModalLabel">確認画面</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              本当に削除してもよろしいですか？
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <%= button_to 'Delete', course_review_path(@course_review), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

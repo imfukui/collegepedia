@@ -1,5 +1,12 @@
 <div class="position-relative mt-3 shadow-none p-3 mb-5 bg-light rounded" id="users-college-review-container">
-  <h4 class="fw-bold"><%= link_to collreview.college.name, college_path(collreview.college), class: "link-success" %></h4>
+  <div class="d-flex">
+    <h4 class="fw-bold"><%= link_to collreview.college.name, college_path(collreview.college), class: "link-success" %></h4>
+    <% if current_user.id == @user.id %>
+      <%= link_to edit_collreview_path(collreview), class: " ms-auto btn btn-white btn-sm" do %>
+        <p><i class="far fa-edit"></i> Edit</p>
+      <% end %>
+    <% end %>
+  </div>
   <table class="table mt-3">
     <tr>
       <th>Environment</th>
@@ -14,36 +21,4 @@
       <td><%= collreview.cons %></td>
     </tr>
   </table>
-  <% if current_user.id == @user.id %>
-    <div class="btn-group position-absolute top-0 end-0">
-      <button class="btn btn-light btn-sm dropdown-toggle" id="collreview-edit-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ul class="dropdown-menu">
-        <li class="dropdown-item"><%= link_to 'Edit', edit_collreview_path(collreview), class: "btn btn-white btn-sm" %></li>
-        <li class="dropdown-item">
-        <button type="button" class="btn btn-white btn-sm link-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Delete
-        </button>
-        </li>
-      </ul>
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title fw-bold" id="exampleModalLabel">確認画面</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              本当に削除してもよろしいですか？
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <%= button_to 'Delete', collreview_path(collreview), method: :delete, class: "btn btn-danger" %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
 </div>
