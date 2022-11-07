@@ -21,6 +21,7 @@ class CollreviewsController < ApplicationController
     if @collreview.user_id != current_user.id
       redirect_to '/'
     end
+    @college = @collreview.college
   end
 
   def update

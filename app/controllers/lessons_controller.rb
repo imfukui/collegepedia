@@ -22,7 +22,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
-    @course_reviews = @lesson.course_reviews
+    @course_reviews = @lesson.course_reviews.order(created_at: :desc)
   end
 
   def edit
