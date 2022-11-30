@@ -11,6 +11,7 @@ import "channels"
 import "bootstrap"
 
 import "./application.scss"
+import "./home/header.js"
 
 Rails.start()
 Turbolinks.start()
