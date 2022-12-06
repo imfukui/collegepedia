@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-11 ms-auto me-auto">
+      <%= link_to user_path(@another_entry.user), class: "block-link link-secondary" do %>
+        <h3 class="fw-bold mb-4"><%= @another_entry.user.name %></h3>
+      <% end %>
+      <div class="pt-2 pb-2" id="chat-wallpaper">
+        <% @chats.each do |chat| %>
+          <% if chat.user_id == current_user.id %>
+            <div class="my-message m-2">
+              <p class="mysaying"><%= chat.message %></p>
+            </div>
+          <% else %>
+            <div class="others-message m-2">
+              <p class="otherssaying"><%= chat.message %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-11 ms-auto me-auto mt-3" id="chat-form">
+      <%= form_with model: @chat, local: false do |f| %>
+        <div class="d-flex form-group">
+          <%= f.text_field :message, class: "form-control" %>
+          <%= f.hidden_field :room_id, :value => @room.id %>
+          <%= f.submit "送る", class: "ms-2 btn btn-outline-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
