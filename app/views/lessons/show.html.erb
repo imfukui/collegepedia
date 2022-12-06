@@ -12,6 +12,7 @@
       <div class="course-review-index">
         <h3><i class="far fa-comments"></i> Reviews</h3>
         <%= render partial: 'lesson_review_index', collection: @course_reviews, as: :review %>
+        <%= paginate @course_reviews, theme: 'bootstrap-5' %>
       </div>
     </div>
   </div>

@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :collreviews, dependent: :destroy
   has_many :course_reviews, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   has_one_attached :image
 

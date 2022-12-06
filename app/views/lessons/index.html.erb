@@ -23,6 +23,7 @@
       </div>
       <h3 class="fw-bold mb-2">Class List</h3>
       <%= render partial: 'class_list', collection: @lessons, as: :lesson %>
+      <%= paginate @lessons, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
