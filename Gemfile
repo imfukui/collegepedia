@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.4'
+ruby '3.0.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6'
@@ -40,6 +40,8 @@ gem 'cancancan'
 gem 'rails_admin', '~> 2.0'
 gem 'dotenv-rails'
 gem 'aws-sdk-s3', require: false
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

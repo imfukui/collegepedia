@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   before_action :set_college
 
   def index
-    @lessons = @college.lessons
+    @lessons = @college.lessons.page(params[:page]).per(10)
     @q = @lessons.ransack(params[:q])
     @search_results = @q.result(distinct: true)
   end
@@ -22,7 +22,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
-    @course_reviews = @lesson.course_reviews.order(created_at: :desc)
+    @course_reviews = @lesson.course_reviews.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def edit

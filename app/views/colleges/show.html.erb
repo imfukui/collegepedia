@@ -32,6 +32,7 @@
         <% end %>
       </div>
       <%= render partial: 'review_index', collection: @collreviews, as: :collreview %>
+      <%= paginate @collreviews, theme: 'bootstrap-5', class: "flex-wrap justify-content-center" %>
     </div>
   </div>
 </div>
