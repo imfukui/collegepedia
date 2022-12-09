@@ -15,8 +15,6 @@ Rails.application.routes.draw do
 
   resources :colleges do
     resources :collreviews, only: [:new, :create]
-    get 'colleges/:id/lessons/desc', to: 'lessons#better_course'
-    get 'colleges/:id/lessons/asce', to: 'lessons#worse_course'
     resources :lessons, only: [:index, :new, :create, :show, :edit, :update] do
       resources :course_reviews, only: [:new, :create]
     end
