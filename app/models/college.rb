@@ -1,6 +1,7 @@
 class College < ApplicationRecord
   has_many :collreviews, dependent: :destroy
   has_many :lessons, dependent: :destroy
+  has_many :course_reviews, dependent: :destroy
 
   validates :name, { presence: true }
   validates :address, { presence: true }

@@ -1,6 +1,14 @@
 <div class="shadow-sm p-3 mb-5 bg-body" id="class-index-list">
   <%= link_to college_lesson_path(@college, lesson), class: "block-link link-dark" do %>
     <h3><i class="far fa-bookmark"></i> <%= lesson.title %></h3>
-    <p><i class="fas fa-user-alt"></i> <%= lesson.professor %></p>
+    <p class="mb-0"><i class="fas fa-user-alt"></i> <%= lesson.professor %></p>
+    <div class="star">
+      <% unless CourseReview.where(lesson_id: [lesson.id]).average(:rate).blank? %>
+        <% for i in 1.. CourseReview.where(lesson_id: [lesson.id]).average(:rate).round do %>
+          ★
+        <% end %>
+        <%= CourseReview.where(lesson_id: [lesson.id]).average(:rate).round %>
+      <% end %>
+    </div>
   <% end %>
 </div>
