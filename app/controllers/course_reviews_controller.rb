@@ -43,7 +43,7 @@ class CourseReviewsController < ApplicationController
   private
 
   def course_review_params
-    params.require(:course_review).permit(:exam, :quiz, :assignment, :gradedist, :comment, :gradegot, :lesson_id, :user_id)
+    params.require(:course_review).permit(:exam, :quiz, :assignment, :gradedist, :comment, :gradegot, :rate, :lesson_id, :user_id)
   end
 
   def set_college_and_lesson

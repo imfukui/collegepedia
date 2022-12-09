@@ -87,6 +87,7 @@ end
   gradedist = "試験50%・クイズ20%・提出物20%・出席10%"
   comment = "クイズの復習がexam対策になる"
   gragegot = "B"
+  rate = Faker::Number.within(range: 1..5)
   lesson_id = Faker::Number.within(range: 1..150)
   user_id = Faker::Number.within(range: 1..10)
 
@@ -97,6 +98,7 @@ end
     gradedist: gradedist,
     comment: comment,
     gradegot: gragegot,
+    rate: rate,
     lesson_id: lesson_id,
     user_id: user_id
   )

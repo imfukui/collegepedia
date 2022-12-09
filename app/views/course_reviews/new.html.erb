@@ -33,6 +33,21 @@
           <%= f.label :gradegot, class: "form-label" %>
           <%= f.select :gradegot, [ ["A"], ["B"], ["C"], ["D"], ["F"], ["回答しない"] ] , {}, {class:"form-select"} %>
         </div>
+        <div class="form-group mb-3">
+          <%= f.label :rate, class: "form-label" %>
+          <div class="star-field">
+            <input id="star5" type="radio" name="course_review[rate]" value="5" />
+            <label for="star5">★</label>
+            <input id="star4" type="radio" name="course_review[rate]" value="4" />
+            <label for="star4">★</label>
+            <input id="star3" type="radio" name="course_review[rate]" value="3" />
+            <label for="star3">★</label>
+            <input id="star2" type="radio" name="course_review[rate]" value="2" />
+            <label for="star2">★</label>
+            <input id="star1" type="radio" name="course_review[rate]" value="1" />
+            <label for="star1">★</label>
+          </div>
+        </div>
         <%= f.submit "追加", class: "btn btn-primary" %>
       <% end %>
     </div>

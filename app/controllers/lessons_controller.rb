@@ -2,9 +2,19 @@ class LessonsController < ApplicationController
   before_action :set_college
 
   def index
-    @lessons = @college.lessons.page(params[:page]).per(10)
-    @q = @lessons.ransack(params[:q])
-    @search_results = @q.result(distinct: true)
+    if params[:high_rate]
+      lessons_array = Lesson.find(Lesson.joins(:course_reviews).where(college_id: @college).group("course_reviews.lesson_id").order('avg(course_reviews.rate) desc').pluck(:lesson_id))
+      @lessons = Kaminari.paginate_array(lessons_array).page(params[:page]).per(5)
+      @q = @college.lessons.ransack(params[:q])
+    elsif params[:low_rate]
+      lessons_array = Lesson.find(Lesson.joins(:course_reviews).where(college_id: @college).group("course_reviews.lesson_id").order('avg(course_reviews.rate)').pluck(:lesson_id))
+      @lessons = Kaminari.paginate_array(lessons_array).page(params[:page]).per(5)
+      @q = @college.lessons.ransack(params[:q])
+    else
+      @lessons = @college.lessons.order(created_at: :desc).page(params[:page]).per(5)
+      @q = @lessons.ransack(params[:q])
+    end
+    @search_results = @q.result
   end
 
   def new
@@ -22,6 +32,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    @avr = CourseReview.where(lesson_id: params[:id]).average(:rate).round
     @course_reviews = @lesson.course_reviews.order(created_at: :desc).page(params[:page]).per(5)
   end
 
@@ -36,6 +47,12 @@ class LessonsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def better_course
+  end
+
+  def worse_course
   end
 
   private

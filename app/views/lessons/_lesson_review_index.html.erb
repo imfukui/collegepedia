@@ -8,7 +8,15 @@
     <%= link_to review.user.name, user_path(review.user), class: "block-link link-success ms-2 mt-1" %>
     <p class="fw-light mb-0 ms-auto"><i class="fas fa-clock"></i> <%= review.created_at.to_s(:datetime_jp) %></p>
   </div>
-  <table class="table mt-3">
+  <table class="table mt-2">
+    <div class="star">
+      <% if review.rate? %>
+        <% for i in 1..review.rate do %>
+          ★
+        <% end %>
+        <%= review.rate %>
+      <% end %>
+    </div>
     <tr>
       <th>Quiz</th>
       <td><%= review.quiz %></td>

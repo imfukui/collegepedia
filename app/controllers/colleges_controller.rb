@@ -22,7 +22,7 @@ class CollegesController < ApplicationController
 
   def show
     @college = College.find(params[:id])
-    @collreviews = @college.collreviews.order(created_at: :desc).page(params[:page]).per(5)
+    @collreviews = @college.collreviews.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   def edit
