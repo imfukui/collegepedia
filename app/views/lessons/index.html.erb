@@ -22,8 +22,8 @@
         <% end %>
       </div>
       <h3 class="fw-bold mb-2">Class List</h3>
-      <%= link_to '高評価順', college_lessons_path(high_rate: "true"), class: "btn btn-outline-success btn-sm" %>
-      <%= link_to '低評価順', college_lessons_path(low_rate: "true"), class: "btn btn-outline-success btn-sm" %>
+      <%= link_to '高評価順', college_lessons_path(high_rate: "true"), class: "block-link link-success me-2" %>
+      <%= link_to '低評価順', college_lessons_path(low_rate: "true"), class: "block-link link-success" %>
       <%= render partial: 'class_list', collection: @lessons, as: :lesson %>
       <%= paginate @lessons, theme: 'bootstrap-5' %>
     </div>
